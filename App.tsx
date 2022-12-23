@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { PersistGate } from 'redux-persist/es/integration/react';
 import { Provider } from 'react-redux';
-import { store, persistor } from './src/store';
+import { store, persistor } from '@/store';
 
 import { Platform, StatusBar } from 'react-native';
 
