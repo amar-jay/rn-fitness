@@ -70,7 +70,7 @@ const Home = ({
           mainCardHeader={"Today Workout"}
         />
         <MainCard
-          image={require("../assets/images/Home/legs.png")}
+          image={require("../assets/splash.png")}
           headerText={"Legs of Iron"}
           subHeaderText={"Intermediate"}
           timeText={"20 mins"}

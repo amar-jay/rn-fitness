@@ -1,3 +1,4 @@
+import { HomeData } from "types"
 const data: HomeData[] = [
   {
     id: "0",

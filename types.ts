@@ -22,7 +22,7 @@ export type SetAction = (
 ) => (dispatch: Dispatch, x: PayLoad | any) => Promise<void>
 
 type Level = "beginner" | "intermediate" | "advance"
-interface HomeData {
+export interface HomeData {
   id: `${number}`
   routineDifficulty: Level
   routineData: {
