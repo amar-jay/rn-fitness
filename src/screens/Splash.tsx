@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
-import { StyleSheet, StatusBar, Image } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
+import { StyleSheet, StatusBar, Image, SafeAreaView } from "react-native"
 import colors from "../constants/colors"
 import screenNames from "../constants/navigation"
 
@@ -31,7 +30,10 @@ const Splash = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor={colors.app_Tint} barStyle="light-content" />
-      <Image source={require("../assets/splash.png")} style={styles.image} />
+      <Image
+        source={require("@expo/snack-static/react-native-logo.png")}
+        style={styles.image}
+      />
     </SafeAreaView>
   )
 }
