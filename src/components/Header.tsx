@@ -1,8 +1,11 @@
 import React from "react"
 import { View, Text, StyleSheet, Image } from "react-native"
-import colors from "../constants/colors"
-
-const Header = ({ userName, mainCardHeader }) => {
+import colors from "@/constants/colors"
+interface Props {
+  userName: string
+  mainCardHeader: string
+}
+const Header: React.FC<Props> = ({ userName, mainCardHeader }) => {
   return (
     <>
       <View
