@@ -30,10 +30,10 @@ const Splash = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor={colors.app_Tint} barStyle="light-content" />
-      <Image
+      {/* <Image
         source={require("@expo/snack-static/react-native-logo.png")}
         style={styles.image}
-      />
+      /> */}
     </SafeAreaView>
   )
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from "react"
 import {
   View,
   Text,
@@ -9,46 +9,47 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
-} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+  SafeAreaView
+} from "react-native"
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-import NativeButton from '@/components/Button';
-import colors from '../constants/colors';
-import screenNames from '../constants/navigation';
-import {useDispatch} from 'react-redux';
-import {homeActions} from '@/store/actions/home';
+  heightPercentageToDP as hp
+} from "react-native-responsive-screen"
+import NativeButton from "@/components/Button"
+import colors from "../constants/colors"
+import screenNames from "../constants/navigation"
+import { useDispatch } from "react-redux"
+import { homeActions } from "@/store/actions/home"
 
-const UserContainer = ({navigation}: any) => {
-  const [user, setUser] = useState('');
+const UserContainer = ({ navigation }: any) => {
+  const [user, setUser] = useState("")
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const onNext = () => {
-    const validate = new RegExp('^\\w[\\w.]{2,18}\\w$'); //validate user-name
+    const validate = new RegExp("^\\w[\\w.]{2,18}\\w$") //validate user-name
 
     if (user.match(validate)) {
       const data = {
-        userName: user,
-      };
-      dispatch(homeActions.setUserData(data));
-      navigation.navigate(screenNames.HOME);
+        userName: user
+      }
+      dispatch(homeActions.setUserData(data))
+      navigation.navigate(screenNames.HOME)
     } else {
       Alert.alert(
-        'Please fill the required details',
-        'Username should be between 4 to 20 characters',
-      );
+        "Please fill the required details",
+        "Username should be between 4 to 20 characters"
+      )
     }
 
     // to-do improve info here
-  };
+  }
   return (
     <SafeAreaView style={styles.mainContainer}>
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'position'}
-        style={{flex: 1}}>
+        behavior={Platform.OS === "ios" ? "padding" : "position"}
+        style={{ flex: 1 }}
+      >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <View>
@@ -59,7 +60,7 @@ const UserContainer = ({navigation}: any) => {
               <TextInput
                 placeholder=" Full Name"
                 style={styles.userInput}
-                onChangeText={(text) => setUser(text)}
+                onChangeText={text => setUser(text)}
                 value={user}
               />
             </View>
@@ -67,53 +68,53 @@ const UserContainer = ({navigation}: any) => {
               <NativeButton
                 textName="Next"
                 onClick={() => onNext()}
-                buttonWidth={'60%'}
+                buttonWidth={"60%"}
               />
             </View>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    top: hp('10%'),
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    top: hp("10%")
   },
   header: {
     fontSize: 30,
-    fontWeight: '700',
+    fontWeight: "700",
     color: colors.app_color_primary,
     top: 40,
-    left: 30,
+    left: 30
   },
   container: {
     backgroundColor: colors.solidWhite,
-    height: hp('65%'),
-    width: wp('100%'),
+    height: hp("65%"),
+    width: wp("100%"),
     borderTopRightRadius: 80,
     borderTopLeftRadius: 80,
-    marginTop: 300,
+    marginTop: 300
   },
   mainContainer: {
     flex: 1,
     backgroundColor: colors.app_Tint,
-    flexDirection: 'column',
-    alignItems: 'flex-end',
+    flexDirection: "column",
+    alignItems: "flex-end"
   },
   subHeader: {
     marginHorizontal: 30,
-    marginTop: hp('10%'),
+    marginTop: hp("10%")
   },
   userInput: {
     marginTop: 20,
     borderColor: colors.app_color_secondary,
     borderWidth: 1,
-    height: hp('5%'),
-  },
-});
-export default UserContainer;
+    height: hp("5%")
+  }
+})
+export default UserContainer
