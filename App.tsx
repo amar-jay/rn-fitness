@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { PersistGate } from 'redux-persist/es/integration/react';
+//import { PersistGate } from 'redux-persist/es/integration/react';
 import { Provider } from 'react-redux';
 import { store, persistor } from '@/store';
 
@@ -12,26 +12,29 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Routine from '@/screens/RoutineList';
 import Exercise from '@/screens/Exercise';
+/*
 import Home from '@/screens/Home';
+import Routine from '@/screens/RoutineList';
 import Settings from '@/screens/Settings';
 import RoutinePlaylist from '@/screens/RoutinePlaylist';
 import CompleteExercise from '@/screens/CompleteExercise';
+import UserContainer from '@/screens/UserContainer';
+import ListExercise from '@/screens/ExerciseLibrary';
+*/
 
 import screenNames from '@/constants/navigation';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { MaterialIcons as Icon} from '@expo/vector-icons';
 import colors from '@/constants/colors';
 import Splash from '@/screens/Splash';
 
-import UserContainer from '@/screens/UserContainer';
-import ListExercise from '@/screens/ExerciseLibrary';
 
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+const PersistGate = ({children}: any) => <>{children}</>
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const iconSize = 30;
@@ -103,9 +106,11 @@ const TabNav = () => {
         component={Home}
         options={{
           tabBarLabel: '',
+          /*
           tabBarOptions: {
             activeTintColor: colors.app_Tint,
           },
+          */
           tabBarIcon: (tabInfo) => {
             return (
               <Icon
@@ -125,9 +130,9 @@ const TabNav = () => {
         component={ListExercise}
         options={{
           tabBarLabel: '',
-          tabBarOptions: {
-            activeTintColor: colors.app_Tint,
-          },
+            /*tabBarOptions: {
+              activeTintColor: colors.app_Tint,
+            },*/
           tabBarIcon: (tabInfo) => {
             return (
               <Icon
@@ -147,9 +152,11 @@ const TabNav = () => {
         component={Settings}
         options={{
           tabBarLabel: '',
+          /*
           tabBarOptions: {
             activeTintColor: colors.app_Tint,
           },
+          */
           tabBarIcon: (tabInfo) => {
             return (
               <Icon

@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import FastImage from 'react-native-fast-image';
 import colors from '@/constants/colors';
 import ExerciseCard from '@/components/ExerciseCard';
 
