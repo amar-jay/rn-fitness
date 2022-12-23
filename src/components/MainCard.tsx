@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   timeContainer: {
     marginTop: Platform.OS === "android" ? hp("18%") : hp("20%"),
     fontSize: 20,
-    fontFamily: "Raleway-Bold",
+    fontFamily: "sans-serif-bold",
     letterSpacing: 0.7,
     color: colors.app_color_primary
   },
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   textContainer: {
     fontSize: 24,
     color: colors.app_color_primary,
-    fontFamily: "Raleway-ExtraBold",
+    fontFamily: "sans-serif-medium",
     width: wp("35%")
   }
 })
