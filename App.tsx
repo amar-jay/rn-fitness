@@ -11,6 +11,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import UserContainer from '@/screens/UserContainer';
 
 import Exercise from '@/screens/Exercise';
 /*
@@ -19,7 +20,6 @@ import Routine from '@/screens/RoutineList';
 import Settings from '@/screens/Settings';
 import RoutinePlaylist from '@/screens/RoutinePlaylist';
 import CompleteExercise from '@/screens/CompleteExercise';
-import UserContainer from '@/screens/UserContainer';
 import ListExercise from '@/screens/ExerciseLibrary';
 */
 
@@ -76,16 +76,19 @@ const HomeStack = () => {
         component={TabNav}
         options={Platform.OS === 'ios' ? { gestureEnabled: false } : {}}
       />
-      <Stack.Screen name={screenNames.ROUTINE} component={Routine} />
+      <Stack.Screen name={screenNames.ROUTINE} component={
+        //Routine
+        Exercise
+        } />
       <Stack.Screen name={screenNames.EXERCISE} component={Exercise} />
-      <Stack.Screen
+      {/* <Stack.Screen
         name={screenNames.EXERCISE_COMPLETED}
         component={CompleteExercise}
       />
       <Stack.Screen
         name={screenNames.ROUTINEPLAYLIST}
         component={RoutinePlaylist}
-      />
+      /> */}
     </Stack.Navigator>
   );
 };
@@ -103,7 +106,10 @@ const TabNav = () => {
       }}>
       <Tab.Screen
         name={screenNames.HOME}
-        component={Home}
+        component={
+          Exercise
+          //Home
+        }
         options={{
           tabBarLabel: '',
           /*
@@ -127,7 +133,10 @@ const TabNav = () => {
       />
       <Tab.Screen
         name={screenNames.LIST_EXERCISE}
-        component={ListExercise}
+        component={
+          Exercise
+          //ListExercise
+        }
         options={{
           tabBarLabel: '',
             /*tabBarOptions: {
@@ -149,7 +158,10 @@ const TabNav = () => {
       />
       <Tab.Screen
         name={screenNames.SETTINGS}
-        component={Settings}
+        component={
+          Exercise
+         // Settings
+        }
         options={{
           tabBarLabel: '',
           /*
