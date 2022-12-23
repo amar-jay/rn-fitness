@@ -6,14 +6,21 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+interface Props {
+	textName: string,
+	onClick: () => void,
+	buttonWidth: string,
+	buttonHeight: string,
+	bgColor: string
+}
 
-const NativeButton = ({
+const Button = ({
   textName,
   onClick,
   buttonWidth,
   buttonHeight,
   bgColor,
-}) => {
+}: Props) => {
   return (
     <TouchableHighlight
       style={[
@@ -32,7 +39,7 @@ const NativeButton = ({
     </TouchableHighlight>
   );
 };
-export default NativeButton;
+export default Button;
 
 const styles = StyleSheet.create({
   text: {
@@ -45,8 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 10,
     borderRadius: 20,
-    borderRadius: 20,
     borderColor: colors.app_Tint,
     backgroundColor: colors.app_Tint,
     justifyContent: 'center',
-  },
+  }})

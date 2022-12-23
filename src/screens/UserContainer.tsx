@@ -15,11 +15,11 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import NativeButton from '../components/NativeButton';
+import NativeButton from '@/components/Button';
 import colors from '../constants/colors';
 import screenNames from '../constants/navigation';
 import {useDispatch} from 'react-redux';
-import {homeActions} from '../store/actions/home';
+import {homeActions} from '@/store/actions/home';
 
 const UserContainer = ({navigation}: any) => {
   const [user, setUser] = useState('');
