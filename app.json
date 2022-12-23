@@ -4,10 +4,10 @@
     "slug": "fitness",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/pictures/logo.ico",
+    "icon": "./src/assets/splash.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./src/assets/pictures/logo.ico",
+      "image": "./src/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/splash.png",
         "backgroundColor": "#FFFFFF"
       }
     },

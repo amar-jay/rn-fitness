@@ -1,18 +1,18 @@
-import React, {useEffect} from 'react';
-import {StyleSheet, StatusBar, Image} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import colors from '../constants/colors';
-import screenNames from '../constants/navigation';
+import React, { useEffect } from "react"
+import { StyleSheet, StatusBar, Image } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
+import colors from "../constants/colors"
+import screenNames from "../constants/navigation"
 
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+  heightPercentageToDP as hp
+} from "react-native-responsive-screen"
 
-const Splash = ({navigation}: any) => {
+const Splash = ({ navigation }: any) => {
   useEffect(() => {
-    setTimeout(() => checkFirstLogin(), 1000);
-  }, []);
+    setTimeout(() => checkFirstLogin(), 1000)
+  }, [])
 
   const checkFirstLogin = async () => {
     try {
@@ -23,40 +23,37 @@ const Splash = ({navigation}: any) => {
       } else {
         navigation.navigate(screenNames.HOME);
       } */
-      navigation.navigate(screenNames.HOME);
+      navigation.navigate(screenNames.HOME)
     } catch (e) {
-      console.log('async error', e);
+      console.log("async error", e)
     }
-  };
+  }
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor={colors.app_Tint} barStyle="light-content" />
-      <Image
-        source={require('../assets/defaults/logo.png')}
-        style={styles.image}
-      />
+      <Image source={require("../assets/splash.png")} style={styles.image} />
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   image: {
-    width: wp('80%'),
-    height: hp('40%'),
-    marginBottom: 200,
+    width: wp("80%"),
+    height: hp("40%"),
+    marginBottom: 200
   },
   container: {
     flex: 1,
     backgroundColor: colors.app_Tint,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center"
   },
   headText: {
     fontSize: 35,
-    fontFamily: 'Raleway-ExtraBold',
+    fontFamily: "Raleway-ExtraBold",
     color: colors.solidWhite,
-    letterSpacing: 0.5,
-  },
-});
+    letterSpacing: 0.5
+  }
+})
 
-export default Splash;
+export default Splash
