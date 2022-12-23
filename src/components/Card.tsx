@@ -1,12 +1,11 @@
 import React from "react"
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
-import FastImage from "react-native-fast-image"
-import screenNames from "../constants/navigation"
+import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native"
+import screenNames from "@/constants/navigation"
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from "react-native-responsive-screen"
-import colors from "../constants/colors"
+import colors from "@/constants/colors"
 
 interface Props {
   image: any
@@ -30,7 +29,7 @@ const Card: React.FC<Props> = ({
       }
     >
       <View style={styles.container}>
-        <FastImage
+        <Image
           source={image}
           style={[
             styles.imageContainer,
