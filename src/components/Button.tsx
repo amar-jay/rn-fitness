@@ -10,8 +10,8 @@ interface Props {
 	textName: string,
 	onClick: () => void,
 	buttonWidth: string,
-	buttonHeight: string,
-	bgColor: string
+	buttonHeight?: string,
+	bgColor?: string
 }
 
 const Button = ({
@@ -28,7 +28,7 @@ const Button = ({
         {
           width: wp(buttonWidth),
           height:
-            hp(buttonHeight) || Platform.OS === 'android' ? hp('7%') : hp('5%'),
+            hp(buttonHeight!) || Platform.OS === 'android' ? hp('7%') : hp('5%'),
           backgroundColor: bgColor || colors.app_Tint,
           borderColor: bgColor || colors.app_Tint,
         },
