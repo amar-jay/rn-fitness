@@ -1,70 +1,70 @@
-import actions from '../constants';
-import homeData from '@/assets/data/home';
+import actions from "../constants"
+import homeData from "@/assets/data/home"
+import { Action, SetAction } from "types"
 
-const getFeedData:Action = (data) => {
-  return async (dispatch) => {
+const getFeedData: Action = data => {
+  return async dispatch => {
     dispatch({
       type: actions.GET_FEED_DATA,
-      payload: data,
-    });
-  };
-};
+      payload: data
+    })
+  }
+}
 
-const setUserData:Action = (data) => {
-  return async (dispatch) => {
-    
+const setUserData: Action = data => {
+  return async dispatch => {
     dispatch({
       type: actions.SET_USER_DATA,
-      payload: data,
-    });
-    console.log('done')
-  };
-};
+      payload: data
+    })
+    console.log("done")
+  }
+}
 
-const setHomeData:SetAction = (selectID, routineDifficulty) => {
+const setHomeData: SetAction = (selectID, routineDifficulty) => {
   return async (dispatch, getState) => {
     const filterFeedData = homeData.filter(
-      (item: any) => item.routineDifficulty === routineDifficulty,
-    );
+      (item: any) => item.routineDifficulty === routineDifficulty
+    )
 
-    const subDataState = getState().home.subData;
+    const subDataState = getState().home.subData
 
-    const filterSubData = subDataState.map((element:{id: number}) => {
+    const filterSubData = subDataState.map((element: { id: number }) => {
       if (element.id == selectID) {
-        return {...element, selected: true};
+        return { ...element, selected: true }
       } else {
-        return {...element, selected: false};
+        return { ...element, selected: false }
       }
-    });
+    })
 
-    dispatch(getFeedData(filterFeedData));
+    dispatch(getFeedData(filterFeedData))
     dispatch({
       type: actions.SET_SUBCATEGORY_DATA,
-      payload: filterSubData,
-    });
+      payload: filterSubData
+    })
     dispatch({
       type: actions.SET_SELECT_ID,
-      payload: selectID,
-    });
-  };
-};
+      payload: selectID
+    })
+  }
+}
 
-const resetCategoryData:Action = () => {
-  return async (dispatch) => {
+const resetCategoryData: Action = () => {
+  return async dispatch => {
     dispatch({
       type: actions.SET_SELECT_ID,
-      payload: 0,
-    });
+      payload: 0
+    })
     dispatch({
       type: actions.RESET_FEED_DATA,
-      payload: true,
-    });
-  };
-};
+      payload: true
+    })
+  }
+}
 
 export const homeActions = {
   getFeedData,
   setHomeData,
   resetCategoryData,
-  setUserData,
-};
+  setUserData
+}

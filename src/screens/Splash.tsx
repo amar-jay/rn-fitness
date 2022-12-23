@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   headText: {
     fontSize: 35,
-    fontFamily: "Raleway-ExtraBold",
+    fontFamily: "sans-serif-condensed",
     color: colors.solidWhite,
     letterSpacing: 0.5
   }

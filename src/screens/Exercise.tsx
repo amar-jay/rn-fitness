@@ -2,22 +2,26 @@ import React from "react"
 import { SafeAreaView, View, Text, StyleSheet } from "react-native"
 import colors from "@/constants/colors"
 import ExerciseCard from "@/components/ExerciseCard"
+import { StackParamList } from "types"
+import { NativeStackScreenProps } from "@react-navigation/native-stack"
 
-const Exercise = ({ route }: any) => {
-  const { exName, exDescription, exImage, exReps } = route.params
+const Exercise = ({
+  route
+}: NativeStackScreenProps<StackParamList, "Exercise">) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ExerciseCard
-        exImage={exImage}
-        exName={exName}
-        exDescription={exDescription}
-        exReps={exReps}
+        exImage={
+          route?.params?.exImage || require("../assets/adaptive-icon.png")
+        }
+        exName={route?.params?.exName || "Exercise Name"}
+        exDescription={route?.params?.exDescription || "Exercise Description"}
+        exReps={"10"}
       />
     </SafeAreaView>
   )
 }
 
-//add circular timer
 export default Exercise
 
 const styles = StyleSheet.create({
@@ -29,7 +33,7 @@ const styles = StyleSheet.create({
   },
   headText: {
     fontSize: 20,
-    fontFamily: "Raleway-Bold",
+    fontFamily: "sans-serif-medium",
     letterSpacing: 0.7,
     color: colors.app_color_primary
   },

@@ -11,14 +11,14 @@ import { createStackNavigator } from "@react-navigation/stack"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import UserContainer from "@/screens/UserContainer"
 
+import Home from "@/screens/Home"
 import Exercise from "@/screens/Exercise"
+import RoutineList from "@/screens/RoutineList"
+import ListExercise from "@/screens/ListExercises"
 /*
-import Home from '@/screens/Home';
-import Routine from '@/screens/RoutineList';
 import Settings from '@/screens/Settings';
 import RoutinePlaylist from '@/screens/RoutinePlaylist';
 import CompleteExercise from '@/screens/CompleteExercise';
-import ListExercise from '@/screens/ExerciseLibrary';
 */
 
 import screenNames from "@/constants/navigation"
@@ -72,13 +72,7 @@ const HomeStack = () => {
         component={TabNav}
         options={Platform.OS === "ios" ? { gestureEnabled: false } : {}}
       />
-      <Stack.Screen
-        name={screenNames.ROUTINE}
-        component={
-          //Routine
-          Exercise
-        }
-      />
+      <Stack.Screen name={screenNames.ROUTINE} component={RoutineList} />
       <Stack.Screen name={screenNames.EXERCISE} component={Exercise} />
       {/* <Stack.Screen
         name={screenNames.EXERCISE_COMPLETED}
@@ -97,19 +91,16 @@ const TabNav = () => {
     <Tab.Navigator
       tabBarOptions={{
         style: {
-          height: Platform.OS === "android" ? hp("7%") : hp("8.2%"),
-          backgroundColor: colors.secondary_container,
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20
+          height: Platform.OS === "android" ? hp("8.2%") : hp("8.2%"),
+          justifyContent: "center",
+          paddingBottom: Platform.OS === "android" ? 10 : 15,
+          backgroundColor: colors.secondary_container
         }
       }}
     >
       <Tab.Screen
         name={screenNames.HOME}
-        component={
-          Exercise
-          //Home
-        }
+        component={Home}
         options={{
           tabBarLabel: "",
           /*
@@ -120,7 +111,7 @@ const TabNav = () => {
           tabBarIcon: tabInfo => {
             return (
               <Icon
-                name="home-filled"
+                name="person"
                 size={iconSize}
                 color={
                   tabInfo.focused ? colors.app_Tint : colors.app_color_secondary
@@ -134,8 +125,8 @@ const TabNav = () => {
       <Tab.Screen
         name={screenNames.LIST_EXERCISE}
         component={
-          Exercise
-          //ListExercise
+          //RoutineList
+          ListExercise
         }
         options={{
           tabBarLabel: "",
@@ -159,8 +150,8 @@ const TabNav = () => {
       <Tab.Screen
         name={screenNames.SETTINGS}
         component={
-          Exercise
-          // Settings
+          Home
+          //Exercise
         }
         options={{
           tabBarLabel: "",
