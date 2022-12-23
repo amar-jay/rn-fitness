@@ -7,7 +7,7 @@ const data: HomeData[] = [
       routine_level: "Advance",
       routine_time: "40"
     },
-    image: require("../images/exercise_1.png"),
+    image: require("../images/exercise_1.jpeg"),
     color: "#EEF7FE"
   },
   {
@@ -18,7 +18,7 @@ const data: HomeData[] = [
       routine_level: "Beginner",
       routine_time: "20"
     },
-    image: require("../images/exercise_2.png"),
+    image: require("../images/exercise_2.jpeg"),
     color: "#FFF5E8"
   },
   {
@@ -29,7 +29,7 @@ const data: HomeData[] = [
       routine_level: "Intermediate",
       routine_time: "30"
     },
-    image: require("../images/exercise_3.png"),
+    image: require("../images/exercise_3.jpeg"),
     color: "#F6F6F6"
   },
   /*{
@@ -40,7 +40,7 @@ const data: HomeData[] = [
       routine_level: 'Beginner',
       routine_time: '20',
     },
-    image: require('../images/Home/legs.png'),
+    image: require('../images/Home/legs.jpeg'),
     color: '#fce2cc',
   },*/
   {
@@ -51,7 +51,7 @@ const data: HomeData[] = [
       routine_level: "Advance",
       routine_time: "40"
     },
-    image: require("../images/exercise_4.png"),
+    image: require("../images/exercise_4.jpeg"),
     color: "#d5edf7"
   }
 ]
