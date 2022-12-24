@@ -11,7 +11,8 @@ const colorss = {
   solidWhite: "white",
   homeBG: "#fcfcfc",
   secondary_container: "#F8F8F8",
-  cardBG: "rgba(245, 126, 122, 0.25)"
+  // card varkground should be a slate grey
+  cardBG: "#f5f5f5"
 }
 
 export default colorss

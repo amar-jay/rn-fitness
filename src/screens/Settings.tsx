@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react"
-import { connect, useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
-import { View, Text, StyleSheet } from "react-native"
+import { FlatList, View, Text, StyleSheet } from "react-native"
 //import PauseTime from '@/components/PauseTime';
 //import Sound from '@/components/Sound';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+  widthPercentageToDP
+} from "react-native-responsive-screen"
 import Sound from "@/components/Demo"
 import { MaterialIcons as Icon } from "@expo/vector-icons"
 import PauseTime from "@/components/Demo"
@@ -12,6 +17,26 @@ import colors from "@/constants/colors"
 import { SettingsState } from "@/store/reducers/settingsContext"
 import InfoCard from "@/components/InfoCard"
 
+interface SettingsData {
+  image?: any
+  description?: string
+  name?: string
+}
+const settingsData = [
+  {
+    image: require("../assets/icon.png"),
+    name: "Language"
+  },
+
+  {
+    image: require("../assets/icon.png"),
+    name: "Edit"
+  },
+  {
+    image: require("../assets/icon.png"),
+    name: "Dark Mode"
+  }
+]
 const Settings = () => {
   const settingState: SettingsState = useSelector(
     (state: any) => state.settings
@@ -34,19 +59,55 @@ const Settings = () => {
 
   useEffect(() => {}, [pauseTimeOptions, soundInfo])
 
+  const renderItem = ({ item, index }: any) => {
+    return (
+      <InfoCard
+        key={index}
+        image={item?.image}
+        description={item?.description}
+        style={[
+          styles.subContainer,
+          {
+            top: 0,
+            width: widthPercentageToDP("90%"),
+            paddingHorizontal: 10,
+            backgroundColor: colors.cardBG,
+            paddingVertical: 5,
+            borderRadius: 10
+          }
+        ]}
+        name={item?.name}
+      />
+    )
+  }
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+        alignItems: "center"
+      }}
+    >
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Settings</Text>
         </View>
-        <View style={styles.listContainer}>
-          <InfoCard
-            name={settingState.userName}
-            image={require("../assets/splash.png")}
-            style={styles.subContainer}
-          />
-        </View>
+        <InfoCard
+          name={settingState.userName}
+          image={require("../assets/images/exercise_1.jpeg")}
+          style={[
+            styles.subContainer,
+            { borderRadius: 0, width: wp("100%"), padding: 30 }
+          ]}
+          description="Ad Exercitationem"
+        />
+        <FlatList
+          style={{ flex: 1, marginTop: 20 }}
+          contentContainerStyle={styles.listContainer}
+          renderItem={renderItem}
+          data={settingsData}
+        />
         {/* <InfoCard style={styles.soundContainer} />
         <View style={styles.subContainer}>
            <PauseTime buttonsData={pauseTimeOptions} onClick={updatePauseTime} /> 
@@ -65,25 +126,24 @@ const styles = StyleSheet.create({
   subContainer: {
     flexDirection: "row",
     justifyContent: "space-evenly",
+    marginVertical: 10,
+    alignItems: "center",
     top: 20
   },
   soundContainer: {
     top: 30
   },
   container: {
-    flex: 1,
-    backgroundColor: "white"
+    flex: 1
   },
   headerContainer: {
     flexDirection: "row",
     justifyContent: "center"
   },
   listContainer: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    top: 20,
-    paddingHorizontal: 20,
-    paddingBottom: 20
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
   },
   header: {
     fontSize: 40,

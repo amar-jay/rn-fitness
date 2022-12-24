@@ -35,7 +35,7 @@ export interface HomeData {
   color: `#${string}`
 }
 
-interface ButtonData {
+export interface ButtonData {
   id: `${number}`
   label: `${number}s`
   value: number

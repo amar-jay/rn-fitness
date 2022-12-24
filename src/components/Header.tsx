@@ -16,7 +16,7 @@ const Header: React.FC<Props> = ({ userName, mainCardHeader }) => {
           justifyContent: "center"
         }}
       >
-        <Text style={styles.userText}>{userName}</Text>
+        <Text style={styles.header}>{userName}</Text>
       </View>
       <Text style={styles.subTitle}>{mainCardHeader}</Text>
     </>
@@ -31,12 +31,13 @@ const styles = StyleSheet.create({
     marginTop: 2,
     letterSpacing: 0.7,
     color: colors.description,
-    fontFamily: "Raleway-Bold"
+    fontFamily: "sans-serif-medium",
+    fontWeight: "600"
   },
-  userText: {
-    fontSize: 24,
-    fontFamily: "Raleway-ExtraBold",
-    color: colors.app_color_primary,
-    letterSpacing: 0.5
+  header: {
+    fontSize: 40,
+    fontFamily: "sans-serif-condensed",
+    letterSpacing: 1,
+    color: colors.app_color_primary
   }
 })

@@ -12,11 +12,11 @@ import {
   heightPercentageToDP as hp
 } from "react-native-responsive-screen"
 import colors from "@/constants/colors"
-import routines from "@/assets/data/routine"
+import routines, { RoutineType } from "@/assets/data/routine"
 import screenNames from "@/constants/navigation"
 
 interface Props {
-  routineType: string
+  routineType: RoutineType
   image: any
   headerText: string
   subHeaderText: string
@@ -132,8 +132,9 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     bottom: 40,
-    height: hp("30%"),
-    width: wp("30%")
+    borderRadius: 50,
+    height: 100,
+    width: 100
   },
   mainContainer: {
     justifyContent: "center"

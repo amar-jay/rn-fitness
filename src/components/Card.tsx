@@ -21,7 +21,7 @@ const Card: React.FC<Props> = ({
 }) => {
   return (
     <TouchableOpacity
-      style={[styles.cardContainer, { backgroundColor: colors.cardBG }]}
+      style={styles.cardContainer}
       onPress={() =>
         navigation.navigate(screenNames.Routine, {
           routineType: routineData.routine_name
@@ -33,7 +33,7 @@ const Card: React.FC<Props> = ({
           source={image}
           style={[
             styles.imageContainer,
-            { width: wp("55%"), height: hp("25%") }
+            { width: wp("55%"), height: hp("25%"), borderRadius: 20 }
           ]}
         />
       </View>
@@ -54,15 +54,15 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    backgroundColor: "rgba(252, 252, 252, 0.8)",
     overflow: "hidden"
   },
   cardContainer: {
+    padding: 5,
     marginLeft: 20,
     marginRight: 10,
     borderRadius: 20,
     flexDirection: "column",
-    borderColor: colors.cardBG,
+    borderColor: colors.app_color_primary,
     marginBottom: 40
   },
   textContainer: {

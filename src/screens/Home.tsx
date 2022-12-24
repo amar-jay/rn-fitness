@@ -70,7 +70,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
           mainCardHeader={"Today Workout"}
         />
         <MainCard
-          image={require("../assets/splash.png")}
+          image={require("../assets/icon.png")}
           headerText={"Legs of Iron"}
           subHeaderText={"Intermediate"}
           timeText={"20 mins"}

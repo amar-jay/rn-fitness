@@ -1,3 +1,4 @@
+import colorss from "@/constants/colors"
 import {
   Text,
   View,
@@ -7,6 +8,7 @@ import {
   StyleProp,
   ViewStyle
 } from "react-native"
+import colors from "@/constants/colors"
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
@@ -15,35 +17,60 @@ import {
 interface Props {
   image: ImageSourcePropType
   name: string
+  description?: string
+  smallVariant?: boolean
   style: StyleProp<ViewStyle>
 }
-const InfoCard: React.FC<Props> = ({ image, name, style }) => {
+const InfoCard: React.FC<Props> = ({
+  smallVariant,
+  image,
+  name,
+  style,
+  description
+}) => {
   return (
-    <View style={style}>
-      <Image source={image} style={styles.imageContainer} />
+    <View style={[style, styles.container]}>
+      <Image
+        source={image}
+        style={
+          smallVariant ? styles.smallImageContainer : styles.imageContainer
+        }
+      />
       <View>
         <Text style={styles.header}>{name}</Text>
-        <Text style={styles.subHeader}>Sadere Aude</Text>
+        <Text style={styles.subHeader}>{description}</Text>
       </View>
     </View>
   )
 }
 export default InfoCard
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between"
+  },
   imageContainer: {
-    width: wp("55%"),
-    height: hp("25%")
+    width: 80,
+    height: 80,
+    borderRadius: 50
+  },
+
+  smallImageContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: 50
   },
   header: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: "700",
-    color: "#000",
+    color: "#333",
     fontFamily: "sans-serif-condensed"
   },
   subHeader: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "700",
-    color: "#ccc",
+    color: colors.description,
     fontFamily: "sans-serif-condensed"
   }
 })
