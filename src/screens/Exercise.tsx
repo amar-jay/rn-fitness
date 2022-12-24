@@ -1,40 +1,28 @@
-import React from "react"
-import { SafeAreaView, View, Text, StyleSheet } from "react-native"
-import colors from "@/constants/colors"
-import ExerciseCard from "@/components/ExerciseCard"
-//import { RootStackParamList } from '@/navs'
+import React from "react";
+import { SafeAreaView } from "react-native";
+import ExerciseCard from "@/components/ExerciseCard";
+import { StackParamList } from "types";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { ScreenNames } from "@/constants/navigation";
 
-interface Params  {
-  exImage: NodeRequire,
-  exDescription: string,
-  exName: string,
-  exReps: unknown
-}
-
-type Props = ScreenProps<"Main", {}, {}>
-const Exercise:React.FC<Props> = ({route}) => {
-    const {exName, exDescription, exImage, exReps} = route.params;
-  
-  let exImage= require("src/assets/splash.png"),
-   exDescription= "undefined",
-   exName= "unknown",
-   exReps= {};
+const Exercise = ({
+  route
+}: NativeStackScreenProps<StackParamList, ScreenNames["Exercise"]>) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ExerciseCard
-        exImage={exImage}
-        exName={exName}
-        exDescription={exDescription}
-        exReps={exReps}
+        exImage={route?.params?.exImage || require("@/assets/splash.png")}
+        exName={route?.params?.exName || "Exercise Name"}
+        exDescription={route?.params?.exDescription || "Exercise Description"}
+        exReps={"10"}
       />
     </SafeAreaView>
-  )
-}
+  );
+};
 
-//add circular timer
-export default Exercise
-
-const styles = StyleSheet.create({
+export default Exercise;
+/*
+const _styles = StyleSheet.create({
   headContainer: {
     flexDirection: "row",
     marginHorizontal: 15,
@@ -43,7 +31,7 @@ const styles = StyleSheet.create({
   },
   headText: {
     fontSize: 20,
-    fontFamily: "Raleway-Bold",
+    fontFamily: "sans-serif-medium",
     letterSpacing: 0.7,
     color: colors.app_color_primary
   },
@@ -67,3 +55,5 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 })
+
+*/

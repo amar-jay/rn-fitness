@@ -1,14 +1,18 @@
 import React, { useEffect } from "react"
-import { StyleSheet, StatusBar, Image, SafeAreaView } from "react-native"
+import { StyleSheet, StatusBar, SafeAreaView } from "react-native"
 import colors from "../constants/colors"
-import screenNames from "../constants/navigation"
+import screenNames, { ScreenNames } from "../constants/navigation"
 
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from "react-native-responsive-screen"
+import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { StackParamList } from "types"
 
-const Splash = ({ navigation }: any) => {
+const Splash = ({
+  navigation
+}: NativeStackScreenProps<StackParamList, ScreenNames["Splash_screen"]>) => {
   useEffect(() => {
     setTimeout(() => checkFirstLogin(), 1000)
   }, [])
@@ -22,7 +26,7 @@ const Splash = ({ navigation }: any) => {
       } else {
         navigation.navigate(screenNames.HOME);
       } */
-      navigation.navigate(screenNames.HOME)
+      navigation.navigate(screenNames.Home)
     } catch (e) {
       console.log("async error", e)
     }
@@ -52,7 +56,7 @@ const styles = StyleSheet.create({
   },
   headText: {
     fontSize: 35,
-    fontFamily: "Raleway-ExtraBold",
+    fontFamily: "sans-serif-condensed",
     color: colors.solidWhite,
     letterSpacing: 0.5
   }

@@ -19,4 +19,5 @@ const subCategories = [
   }
 ]
 
+export type SubCategory = typeof subCategories[0]
 export default subCategories

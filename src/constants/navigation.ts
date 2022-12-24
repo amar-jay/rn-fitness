@@ -1,15 +1,18 @@
 const screenNames = {
-    HOME: 'HOME',
-    ROUTINE: 'ROUTINE',
-    EXERCISE: 'EXERCISE',
-    SETTINGS: 'SETTINGS',
-    HOMESTACK: 'HOMESTACK',
-    ROUTINEPLAYLIST: 'ROUTINEPLAYLIST',
-    EXERCISE_COMPLETED: 'EXERCISE_COMPLETED',
-    SPLASH_SCREEN: 'SPLASH_SCREEN',
-    USER_CONTAINER: 'USER_CONTAINER',
-    LIST_EXERCISE: 'LIST_EXERCISE',
-    ANALYSIS: 'ANALYSIS',
-};
+  Home: "HOME",
+  Routine: "ROUTINE",
+  Exercise: "EXERCISE",
+  Settings: "SETTINGS",
+  Homestack: "HOMESTACK",
+  Routine_playlist: "ROUTINE_PLAYLIST",
+  Exercise_completed: "EXERCISE_COMPLETED",
+  Splash_screen: "SPLASH_SCREEN",
+  User_container: "USER_CONTAINER",
+  List_exercise: "LIST_EXERCISE",
+  Analysis: "ANALYSIS"
+} as const
 
+//type ScreenNameKeys = Capitalize<keyof typeof screenNames>
+//export type ScreenNames = Map<ScreenNameKeys, keyof typeof screenNames>
 export default screenNames
+export type ScreenNames = typeof screenNames
