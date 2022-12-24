@@ -143,6 +143,7 @@ const routines = [
       }
     ]
   }
-]
+] as const
 
+export type RoutineType = keyof typeof routines[0]
 export default routines
