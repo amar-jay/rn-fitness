@@ -2,9 +2,23 @@ import React from "react"
 import { SafeAreaView, View, Text, StyleSheet } from "react-native"
 import colors from "@/constants/colors"
 import ExerciseCard from "@/components/ExerciseCard"
+//import { RootStackParamList } from '@/navs'
 
-const Exercise = ({ route }: any) => {
-  const { exName, exDescription, exImage, exReps } = route.params
+interface Params  {
+  exImage: NodeRequire,
+  exDescription: string,
+  exName: string,
+  exReps: unknown
+}
+
+type Props = ScreenProps<"Main", {}, {}>
+const Exercise:React.FC<Props> = ({route}) => {
+    const {exName, exDescription, exImage, exReps} = route.params;
+  
+  let exImage= require("src/assets/splash.png"),
+   exDescription= "undefined",
+   exName= "unknown",
+   exReps= {};
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ExerciseCard

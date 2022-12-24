@@ -1,3 +1,6 @@
+import { DrawerScreenProps } from '@react-navigation/drawer'
+import { CompositeScreenProps } from '@react-navigation/native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 interface DispatchPropsFxn {
 type: string,
@@ -28,3 +31,5 @@ interface ButtonData {
 	value: number,
 	selected: boolean
 }
+
+type ScreenProps<T,DrawerProps, StackProps> = T extends string? CompositeScreenProps<DrawerScreenProps<DrawerProps, T>, NativeStackScreenProps<StackProps>>: never;

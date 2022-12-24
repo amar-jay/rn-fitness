@@ -107,7 +107,7 @@ const TabNav = () => {
       <Tab.Screen
         name={screenNames.HOME}
         component={
-          Exercise
+          Settings 
           //Home
         }
         options={{
@@ -134,7 +134,7 @@ const TabNav = () => {
       <Tab.Screen
         name={screenNames.LIST_EXERCISE}
         component={
-          Exercise
+          Settings
           //ListExercise
         }
         options={{
@@ -159,8 +159,7 @@ const TabNav = () => {
       <Tab.Screen
         name={screenNames.SETTINGS}
         component={
-          Exercise
-          // Settings
+           Settings
         }
         options={{
           tabBarLabel: "",
