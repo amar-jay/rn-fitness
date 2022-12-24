@@ -12,7 +12,7 @@ import {
   heightPercentageToDP as hp
 } from "react-native-responsive-screen"
 import colors from "@/constants/colors"
-import routines, { RoutineType } from "@/assets/data/routine"
+import { RoutineType } from "@/assets/data/routine"
 import screenNames from "@/constants/navigation"
 
 interface Props {

@@ -8,9 +8,9 @@ import Home from "@/screens/Home"
 import Exercise from "@/screens/Exercise"
 import RoutineList from "@/screens/RoutineList"
 import ListExercise from "@/screens/ListExercises"
-import RoutinePlaylist from "@/screens/RoutineList"
 /*
 import Settings from '@/screens/Settings';
+import RoutinePlaylist from "@/screens/RoutinePlayList"
 import CompleteExercise from '@/screens/CompleteExercise';
 */
 
@@ -18,10 +18,7 @@ import screenNames from "@/constants/navigation"
 import { MaterialIcons as Icon } from "@expo/vector-icons"
 import Splash from "@/screens/Splash"
 
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen"
+import { heightPercentageToDP as hp } from "react-native-responsive-screen"
 import { Platform } from "react-native"
 import colors from "@/constants/colors"
 import Settings from "@/screens/Settings"

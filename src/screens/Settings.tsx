@@ -1,28 +1,15 @@
 import React, { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
+import { useSelector } from "react-redux"
+import { SafeAreaView } from "react-native-safe-area-context"
 import { FlatList, View, Text, StyleSheet } from "react-native"
 //import PauseTime from '@/components/PauseTime';
 //import Sound from '@/components/Sound';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-  widthPercentageToDP
-} from "react-native-responsive-screen"
-import Sound from "@/components/Demo"
-import { MaterialIcons as Icon } from "@expo/vector-icons"
-import PauseTime from "@/components/Demo"
-import settings from "@/store/actions/settings"
+import { widthPercentageToDP as wp } from "react-native-responsive-screen"
 import colors from "@/constants/colors"
-import { SettingsState } from "@/store/reducers/settingsContext"
+import { SettingsData } from "types"
 import InfoCard from "@/components/InfoCard"
 
-interface SettingsData {
-  image?: any
-  description?: string
-  name?: string
-}
-const settingsData = [
+const settingsData: SettingsData[] = [
   {
     image: require("../assets/icon.png"),
     name: "Language"
@@ -38,25 +25,27 @@ const settingsData = [
   }
 ]
 const Settings = () => {
-  const settingState: SettingsState = useSelector(
-    (state: any) => state.settings
+  const settingState = useSelector((state: any) => state.settings)
+
+  const [pauseTimeOptions, _setOptions] = useState(
+    settingState.pauseTimeOptions
   )
-  const dispatch = useDispatch()
+  const [soundInfo, _setSound] = useState(settingState.soundInfo)
 
-  const [pauseTimeOptions, setOptions] = useState(settingState.pauseTimeOptions)
-  const [soundInfo, setSound] = useState(settingState.soundInfo)
-
-  const updatePauseTime = () => {
+  /*
+  const _dispatch = useDispatch()
+  const _updatePauseTime = () => {
     const data = settingState.pauseTimeOptions.filter((i: any) => i.selected)
     dispatch(settings.setBreakTime(data[0].value))
   }
 
-  const updateSound = () => {
+  const _updateSound = () => {
     const data: boolean = !soundInfo
     setSound(data)
     dispatch(settings.toggleSound(data))
   }
 
+  */
   useEffect(() => {}, [pauseTimeOptions, soundInfo])
 
   const renderItem = ({ item, index }: any) => {
@@ -69,7 +58,7 @@ const Settings = () => {
           styles.subContainer,
           {
             top: 0,
-            width: widthPercentageToDP("90%"),
+            width: wp("90%"),
             paddingHorizontal: 10,
             backgroundColor: colors.cardBG,
             paddingVertical: 5,

@@ -23,7 +23,7 @@ const Exercise = ({
 
 export default Exercise
 
-const styles = StyleSheet.create({
+const _styles = StyleSheet.create({
   headContainer: {
     flexDirection: "row",
     marginHorizontal: 15,

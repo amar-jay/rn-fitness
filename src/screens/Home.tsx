@@ -6,7 +6,6 @@ import {
   StyleSheet,
   BackHandler,
   Alert,
-  ScrollView,
   StatusBar
 } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
@@ -22,7 +21,7 @@ import colors from "@/constants/colors"
 import MainCard from "@/components/MainCard"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { StackParamList } from "types"
-import screenNames, { ScreenNames } from "@/constants/navigation"
+import { ScreenNames } from "@/constants/navigation"
 
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Home"]>
 const Home: React.FC<Props> = ({ navigation }) => {

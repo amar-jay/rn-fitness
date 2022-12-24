@@ -17,7 +17,7 @@ import {
 } from "react-native-responsive-screen"
 import Button from "@/components/Button"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { StackParamList, Dict } from "types"
+import { StackParamList } from "types"
 import colors from "@/constants/colors"
 
 // List specific exercises given a route parameter

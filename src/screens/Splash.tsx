@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { StyleSheet, StatusBar, Image, SafeAreaView } from "react-native"
+import { StyleSheet, StatusBar, SafeAreaView } from "react-native"
 import colors from "../constants/colors"
 import screenNames, { ScreenNames } from "../constants/navigation"
 

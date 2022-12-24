@@ -1,11 +1,14 @@
-import { CompositeScreenProps, ParamListBase } from "@react-navigation/native"
-import { DrawerScreenProps } from "@react-navigation/drawer"
-import screenNames from "@/constants/navigation"
-import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { ParamListBase } from "@react-navigation/native"
 import routines from "@/assets/data/routine"
 
 export type Dict<T> = { [K: string]: T }
 export type RoutineType = keyof typeof routines[0]
+
+export interface SettingsData {
+  image?: any
+  description?: string
+  name?: string
+}
 
 interface DispatchPropsFxn {
   type: string

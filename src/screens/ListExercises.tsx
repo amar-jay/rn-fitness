@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { View, Text, StyleSheet, FlatList } from "react-native"
 import { useDispatch, useSelector } from "react-redux"

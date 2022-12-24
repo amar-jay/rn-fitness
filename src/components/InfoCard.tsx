@@ -1,4 +1,3 @@
-import colorss from "@/constants/colors"
 import {
   Text,
   View,
@@ -9,10 +8,6 @@ import {
   ViewStyle
 } from "react-native"
 import colors from "@/constants/colors"
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen"
 
 interface Props {
   image: ImageSourcePropType

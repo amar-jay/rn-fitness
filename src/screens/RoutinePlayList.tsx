@@ -8,16 +8,17 @@ import {
   StatusBar
 } from "react-native"
 import { useFocusEffect } from "@react-navigation/native"
-import ExerciseCard from "./ExerciseCard"
+import ExerciseCard from "../components/ExerciseCard"
 import BreakPause from "./BreakPause"
 import screenNames from "../constants/navigation"
-import NativeButton from "../components/NativeButton"
+import NativeButton from "../components/Button"
 import ExerciseHeader from "../components/ExerciseHeader"
 import CompleteExercise from "./CompleteExercise"
 import { useSelector } from "react-redux"
 import colors from "../constants/colors"
 
-const RoutinePlaylist = ({ navigation, route }) => {
+type Props = any
+const RoutinePlaylist: React.FC<Props> = ({ navigation, route }) => {
   const { data } = route.params // to-do state management
   const [currentIndex, setIndex] = useState(0)
   const [image, setImage] = useState(data[0].image)
@@ -39,7 +40,7 @@ const RoutinePlaylist = ({ navigation, route }) => {
     }, [currentIndex, delayExercise])
   )
 
-  onClickNext = () => {
+  const onClickNext = () => {
     if (currentIndex < data.length) {
       setImage(data[currentIndex].image)
       setName(data[currentIndex].routineName)
@@ -59,14 +60,14 @@ const RoutinePlaylist = ({ navigation, route }) => {
     }
   }
 
-  manageBreak = () => {
+  const manageBreak = () => {
     setTimeout(
       () => setDelay(!!delayExercise),
       settingSelector.breakTime * 1000
     )
   }
 
-  toggleBreak = () => {
+  const toggleBreak = () => {
     setDelay(!delayExercise)
   }
 
