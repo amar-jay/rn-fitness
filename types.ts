@@ -2,7 +2,6 @@ import { ParamListBase } from "@react-navigation/native"
 import routines from "@/assets/data/routine"
 
 export type Dict<T> = { [K: string]: T }
-export type RoutineType = keyof typeof routines[0]
 
 export interface SettingsData {
   image?: any
@@ -33,6 +32,8 @@ export interface HomeData {
     routine_name: string
     routine_level: Capitalize<Level>
     routine_time: `${number}`
+    image: NodeRequire
+    routine_description: string
   }
   image: NodeRequire
   color: `#${string}`
@@ -55,6 +56,10 @@ export interface StackParamList extends ParamListBase {
   }
   DETAILS: { id: `${number}` }
   SETTINGS: undefined
+  ROUTINE_PLAYLIST: { data: Routine }
   PROFILE: undefined
   LOGIN: undefined
 }
+
+export type RoutineType = keyof typeof routines[0]
+export type Routine = typeof routines[0][RoutineType]

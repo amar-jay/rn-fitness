@@ -1,10 +1,9 @@
-import React from "react"
-import { SafeAreaView, View, Text, StyleSheet } from "react-native"
-import colors from "@/constants/colors"
-import ExerciseCard from "@/components/ExerciseCard"
-import { StackParamList } from "types"
-import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { ScreenNames } from "@/constants/navigation"
+import React from "react";
+import { SafeAreaView } from "react-native";
+import ExerciseCard from "@/components/ExerciseCard";
+import { StackParamList } from "types";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { ScreenNames } from "@/constants/navigation";
 
 const Exercise = ({
   route
@@ -18,11 +17,11 @@ const Exercise = ({
         exReps={"10"}
       />
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Exercise
-
+export default Exercise;
+/*
 const _styles = StyleSheet.create({
   headContainer: {
     flexDirection: "row",
@@ -56,3 +55,5 @@ const _styles = StyleSheet.create({
     fontSize: 20
   }
 })
+
+*/

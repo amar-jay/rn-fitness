@@ -143,7 +143,14 @@ const routines = [
       }
     ]
   }
-] as const
+] as Routine[]
 
-export type RoutineType = keyof typeof routines[0]
+interface Routine {
+  [key: string]: {
+    id: string
+    routineName: string
+    routineDescription: string
+    image: any
+  }[]
+}
 export default routines

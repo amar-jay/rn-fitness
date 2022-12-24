@@ -12,7 +12,7 @@ import {
   heightPercentageToDP as hp
 } from "react-native-responsive-screen"
 import colors from "@/constants/colors"
-import { RoutineType } from "@/assets/data/routine"
+import { RoutineType } from "types"
 import screenNames from "@/constants/navigation"
 
 interface Props {
@@ -124,9 +124,9 @@ const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: "row",
     marginHorizontal: 20,
-    marginTop: 15,
+    marginTop: 10,
     borderRadius: 30,
-    backgroundColor: "rgba(204, 232, 255, 0.7)",
+    backgroundColor: colors.soundInfo,
     justifyContent: "center",
     height: hp("35%")
   },

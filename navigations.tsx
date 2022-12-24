@@ -22,6 +22,7 @@ import { heightPercentageToDP as hp } from "react-native-responsive-screen"
 import { Platform } from "react-native"
 import colors from "@/constants/colors"
 import Settings from "@/screens/Settings"
+import RoutinePlaylist from "@/screens/RoutinePlayList"
 
 const Stack = createStackNavigator<StackParamList>()
 const Tab = createBottomTabNavigator()
@@ -45,15 +46,16 @@ const Navigation: React.FC = () => {
       />
       <Stack.Screen name={screenNames.Routine} component={RoutineList} />
       <Stack.Screen name={screenNames.Exercise} component={Exercise} />
+      <Stack.Screen
+        name={screenNames.Routine_playlist}
+        component={RoutinePlaylist}
+      />
       {/* <Stack.Screen
         name={screenNames.EXERCISE_COMPLETED}
         component={CompleteExercise}
       />
 
-      <Stack.Screen
-        name={screenNames.Routine_playlist}
-        component={RoutinePlaylist}
-      />
+
        */}
     </Stack.Navigator>
   )

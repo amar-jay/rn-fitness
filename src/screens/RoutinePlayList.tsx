@@ -9,27 +9,39 @@ import {
 } from "react-native"
 import { useFocusEffect } from "@react-navigation/native"
 import ExerciseCard from "../components/ExerciseCard"
-import BreakPause from "./BreakPause"
-import screenNames from "../constants/navigation"
+import BreakPause from "@/components/BreakPause"
+import screenNames, { ScreenNames } from "../constants/navigation"
 import NativeButton from "../components/Button"
-import ExerciseHeader from "../components/ExerciseHeader"
+import ExerciseHeader from "@/components/ExerciseHeader"
 import CompleteExercise from "./CompleteExercise"
 import { useSelector } from "react-redux"
 import colors from "../constants/colors"
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps
+} from "@react-navigation/native-stack"
+import { Routine, StackParamList } from "types"
 
-type Props = any
+type Props = NativeStackScreenProps<
+  StackParamList,
+  ScreenNames["Routine_playlist"]
+>
 const RoutinePlaylist: React.FC<Props> = ({ navigation, route }) => {
   const { data } = route.params // to-do state management
   const [currentIndex, setIndex] = useState(0)
-  const [image, setImage] = useState(data[0].image)
-  const [name, setName] = useState(data[0].routineName)
-  const [description, setDescription] = useState(data[0].routineDescription)
+  const [image, setImage] = useState<Routine[0]["image"]>(data[0].image)
+  const [name, setName] = useState<Routine[0]["routineDescription"]>(
+    data[0].routineName
+  )
+  const [description, setDescription] = useState<
+    Routine[0]["routineDescription"]
+  >(data[0].routineDescription)
 
   const [delayExercise, setDelay] = useState(false)
 
   const [completeEx, setComplete] = useState(false)
 
-  const settingSelector = useSelector(state => state.settings)
+  const settingSelector = useSelector((state: any) => state.settings)
 
   useFocusEffect(
     React.useCallback(() => {
@@ -82,14 +94,14 @@ const RoutinePlaylist: React.FC<Props> = ({ navigation, route }) => {
         text: "YES",
         onPress: () =>
           navigation.reset({
-            routes: [{ name: screenNames.HOME }]
+            routes: [{ name: screenNames.Home }]
           })
       }
     ])
     return true
   }
 
-  renderComponent = () => {
+  const renderComponent = () => {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
         <StatusBar
@@ -133,7 +145,16 @@ const RoutinePlaylist: React.FC<Props> = ({ navigation, route }) => {
   return !completeEx ? (
     renderComponent()
   ) : (
-    <CompleteExercise navigation={navigation} />
+    <CompleteExercise
+      route={route as any}
+      navigation={
+        navigation as NativeStackNavigationProp<
+          StackParamList,
+          "EXERCISE_COMPLETED",
+          undefined
+        >
+      }
+    />
   )
 }
 
