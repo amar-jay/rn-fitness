@@ -5,19 +5,20 @@ import { View, Text, StyleSheet } from "react-native"
 //import PauseTime from '@/components/PauseTime';
 //import Sound from '@/components/Sound';
 import Sound from "@/components/Demo"
+import { MaterialIcons as Icon } from "@expo/vector-icons"
 import PauseTime from "@/components/Demo"
 import settings from "@/store/actions/settings"
 import colors from "@/constants/colors"
 
 const Settings = () => {
-  const settingState = useSelector(state => state.settings)
+  const settingState = useSelector((state: any) => state.settings)
   const dispatch = useDispatch()
 
   const [pauseTimeOptions, setOptions] = useState(settingState.pauseTimeOptions)
   const [soundInfo, setSound] = useState(settingState.soundInfo)
 
   const updatePauseTime = () => {
-    const data = settingState.pauseTimeOptions.filter(i => i.selected)
+    const data = settingState.pauseTimeOptions.filter((i: any) => i.selected)
     dispatch(settings.setBreakTime(data[0].value))
   }
 
@@ -36,10 +37,11 @@ const Settings = () => {
           <Text style={styles.header}>Settings</Text>
         </View>
         <View style={styles.subContainer}>
-          <PauseTime buttonsData={pauseTimeOptions} onClick={updatePauseTime} />
+          {/* <PauseTime buttonsData={pauseTimeOptions} onClick={updatePauseTime} /> */}
+          <Icon name="playlist-play" size={24} color="black" />
         </View>
         <View style={styles.soundContainer}>
-			<
+          <Icon name="volume-up" size={24} color="black" />
           {/* <Sound soundInfo={soundInfo} toggleSound={updateSound} /> */}
         </View>
       </View>
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 40,
-    fontFamily: "Raleway-Bold",
+    fontFamily: "sans-serif-bold",
     letterSpacing: 1,
     color: colors.app_color_primary
   }

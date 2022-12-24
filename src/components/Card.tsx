@@ -23,7 +23,7 @@ const Card: React.FC<Props> = ({
     <TouchableOpacity
       style={[styles.cardContainer, { backgroundColor: colors.cardBG }]}
       onPress={() =>
-        navigation.navigate(screenNames.ROUTINE, {
+        navigation.navigate(screenNames.Routine, {
           routineType: routineData.routine_name
         })
       }

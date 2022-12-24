@@ -24,7 +24,7 @@ const RoutineCard = ({
       <TouchableOpacity
         style={styles.cardContainer}
         onPress={() =>
-          navigation.navigate(screenNames.EXERCISE, {
+          navigation.navigate(screenNames.Routine, {
             exName: exerciseName,
             exDescription: exerciseDescription,
             exImage: image,

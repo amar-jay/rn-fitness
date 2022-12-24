@@ -20,6 +20,7 @@ import Button from "@/components/Button"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { StackParamList, Dict } from "types"
 
+// List specific exercises given a route parameter
 const Routine = ({
   navigation,
   route
@@ -42,6 +43,7 @@ const Routine = ({
 
   const startRoutine = () => {
     const selectedRoutine = routines[0][routineType]
+    console.log("Routed to routine playlist")
     navigation.navigate(screenNames.Routine_playlist, { data: selectedRoutine })
   }
 
@@ -76,7 +78,7 @@ const Routine = ({
 const styles = StyleSheet.create({
   header: {
     fontSize: 30,
-    fontFamily: "Raleway-Bold",
+    fontFamily: "sans-serif-bold",
     letterSpacing: 0.7,
     color: colors.app_color_primary,
     top: 40,

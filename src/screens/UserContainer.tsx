@@ -34,7 +34,7 @@ const UserContainer = ({ navigation }: any) => {
         userName: user
       }
       dispatch(homeActions.setUserData(data))
-      navigation.navigate(screenNames.HOME)
+      navigation.navigate(screenNames.Home)
     } else {
       Alert.alert(
         "Please fill the required details",
