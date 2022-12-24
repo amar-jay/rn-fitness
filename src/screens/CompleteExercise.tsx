@@ -1,12 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import screenNames, { ScreenNames } from "../constants/navigation";
-import colors from "../constants/colors";
-import NativeButton from "../components/Button";
+import { SafeAreaView, View, Text, StyleSheet } from "react-native";
 import { Ionicons as Icon } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackParamList } from "types";
+import screenNames, { ScreenNames } from "../constants/navigation";
+import colors from "../constants/colors";
+import NativeButton from "../components/Button";
 
 type Props = NativeStackScreenProps<
   StackParamList,
