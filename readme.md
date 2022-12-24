@@ -1,11 +1,11 @@
-# focusing on the ui
+# focusing on the u.i.
 
 - create mockup
 - color pallete
 - font
 - layout design and wireframe
 - component design
-- code the ui
+- code the u.i.
 
 ## Todo
 

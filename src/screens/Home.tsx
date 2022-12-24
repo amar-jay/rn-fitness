@@ -22,10 +22,10 @@ import colors from "@/constants/colors"
 import MainCard from "@/components/MainCard"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { StackParamList } from "types"
+import screenNames, { ScreenNames } from "@/constants/navigation"
 
-const Home = ({
-  navigation
-}: NativeStackScreenProps<StackParamList, "Home">) => {
+type Props = NativeStackScreenProps<StackParamList, ScreenNames["Home"]>
+const Home: React.FC<Props> = ({ navigation }) => {
   const home = useSelector((state: any) => state.home)
 
   useFocusEffect(

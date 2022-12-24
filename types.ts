@@ -1,5 +1,6 @@
 import { CompositeScreenProps, ParamListBase } from "@react-navigation/native"
 import { DrawerScreenProps } from "@react-navigation/drawer"
+import screenNames from "@/constants/navigation"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import routines from "@/assets/data/routine"
 
@@ -41,16 +42,16 @@ interface ButtonData {
   selected: boolean
 }
 export interface StackParamList extends ParamListBase {
-  Home: undefined
-  Routine: { routineType: RoutineType }
-  Exercise: {
+  HOME: undefined
+  ROUTINE: { routineType: RoutineType }
+  EXERCISE: {
     exImage: NodeRequire
     exColor: `#${string}`
     exName: string
     exDescription: string
   }
-  Details: { id: `${number}` }
-  Settings: undefined
-  Profile: undefined
-  Login: undefined
+  DETAILS: { id: `${number}` }
+  SETTINGS: undefined
+  PROFILE: undefined
+  LOGIN: undefined
 }

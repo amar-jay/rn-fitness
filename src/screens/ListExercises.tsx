@@ -8,10 +8,14 @@ import RoutineCard from "../components/RoutineCard"
 import colors from "../constants/colors"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { StackParamList } from "types"
+import screenNames from "@/constants/navigation"
 
 const ExerciseLibrary = ({
   navigation
-}: NativeStackScreenProps<StackParamList, "">) => {
+}: NativeStackScreenProps<
+  StackParamList,
+  typeof screenNames.List_exercise
+>) => {
   const dispatch = useDispatch()
   const state = useSelector((state: any) => state.library)
 

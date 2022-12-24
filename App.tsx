@@ -30,9 +30,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from "react-native-responsive-screen"
+import { StackParamList } from "types"
 
 const PersistGate = ({ children }: any) => <>{children}</>
-const Stack = createStackNavigator()
+const Stack = createStackNavigator<StackParamList>()
 const Tab = createBottomTabNavigator()
 const iconSize = 30
 
@@ -60,20 +61,20 @@ const HomeStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName={screenNames.SPLASH_SCREEN}
+      initialRouteName={screenNames.Splash_screen}
     >
-      <Stack.Screen name={screenNames.SPLASH_SCREEN} component={Splash} />
+      <Stack.Screen name={screenNames.Splash_screen} component={Splash} />
       <Stack.Screen
-        name={screenNames.USER_CONTAINER}
+        name={screenNames.User_container}
         component={UserContainer}
       />
       <Stack.Screen
-        name={screenNames.HOME}
+        name={screenNames.Home}
         component={TabNav}
         options={Platform.OS === "ios" ? { gestureEnabled: false } : {}}
       />
-      <Stack.Screen name={screenNames.ROUTINE} component={RoutineList} />
-      <Stack.Screen name={screenNames.EXERCISE} component={Exercise} />
+      <Stack.Screen name={screenNames.Routine} component={RoutineList} />
+      <Stack.Screen name={screenNames.Exercise} component={Exercise} />
       {/* <Stack.Screen
         name={screenNames.EXERCISE_COMPLETED}
         component={CompleteExercise}
@@ -99,7 +100,7 @@ const TabNav = () => {
       }}
     >
       <Tab.Screen
-        name={screenNames.HOME}
+        name={screenNames.Home}
         component={Home}
         options={{
           tabBarLabel: "",
@@ -123,7 +124,7 @@ const TabNav = () => {
         }}
       />
       <Tab.Screen
-        name={screenNames.LIST_EXERCISE}
+        name={screenNames.List_exercise}
         component={
           //RoutineList
           ListExercise
@@ -148,11 +149,8 @@ const TabNav = () => {
         }}
       />
       <Tab.Screen
-        name={screenNames.SETTINGS}
-        component={
-          Home
-          //Exercise
-        }
+        name={screenNames.Settings}
+        component={Home}
         options={{
           tabBarLabel: "",
           /*

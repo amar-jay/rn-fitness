@@ -4,10 +4,11 @@ import colors from "@/constants/colors"
 import ExerciseCard from "@/components/ExerciseCard"
 import { StackParamList } from "types"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { ScreenNames } from "@/constants/navigation"
 
 const Exercise = ({
   route
-}: NativeStackScreenProps<StackParamList, "Exercise">) => {
+}: NativeStackScreenProps<StackParamList, ScreenNames["Exercise"]>) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ExerciseCard

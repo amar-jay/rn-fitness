@@ -11,7 +11,7 @@ import {
 import routines from "@/assets/data/routine"
 import RoutineCard from "@/components/RoutineCard"
 import colors from "@/constants/colors"
-import screenNames from "@/constants/navigation"
+import screenNames, { ScreenNames } from "@/constants/navigation"
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
@@ -23,7 +23,7 @@ import { StackParamList, Dict } from "types"
 const Routine = ({
   navigation,
   route
-}: NativeStackScreenProps<StackParamList, "Routine">) => {
+}: NativeStackScreenProps<StackParamList, ScreenNames["Routine"]>) => {
   const { routineType } = route?.params!
 
   const renderItem = ({ item }: { item: Dict<any[]> }) => {
@@ -42,7 +42,7 @@ const Routine = ({
 
   const startRoutine = () => {
     const selectedRoutine = routines[0][routineType]
-    navigation.navigate(screenNames.ROUTINEPLAYLIST, { data: selectedRoutine })
+    navigation.navigate(screenNames.Routine_playlist, { data: selectedRoutine })
   }
 
   return (

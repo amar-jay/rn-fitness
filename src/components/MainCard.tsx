@@ -34,7 +34,7 @@ const MainCard: React.FC<Props> = ({
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate(screenNames.ROUTINE, {
+        navigation.navigate(screenNames.Routine, {
           routineType: routineType
         })
       }}
