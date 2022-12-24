@@ -24,5 +24,3 @@
 <img width="200" src="./src/assets/images/screenshots/Screenshot_20221224-200925_Expo%20Go.jpg" >
 <img width="200" src="./src/assets/images/screenshots/Screenshot_20221224-200928_Expo%20Go.jpg" >
 <img width="200" src="./src/assets/images/screenshots/Screenshot_20221224-200930_Expo%20Go.jpg" >
-
-img[alt=screenshot] { width: 10px; }
