@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 24,
     color: colors.app_color_primary,
-    fontFamily: "sans-serif-medium",
+    fontFamily: "sans-serif-condensed",
     letterSpacing: 0.7,
     marginVertical: 15
   }

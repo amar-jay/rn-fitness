@@ -45,7 +45,7 @@ const MainCard: React.FC<Props> = ({
           <View style={styles.levelContainer}>
             <Text
               style={{
-                fontFamily: "Raleway-Bold",
+                fontFamily: "sans-serif-condensed",
                 letterSpacing: 0.7,
                 fontSize: 14,
                 color: colors.app_color_secondary,
@@ -90,7 +90,8 @@ const styles = StyleSheet.create({
   timeContainer: {
     marginTop: Platform.OS === "android" ? hp("18%") : hp("20%"),
     fontSize: 20,
-    fontFamily: "sans-serif-bold",
+    fontFamily: "sans-serif-condensed",
+    fontWeight: "700",
     letterSpacing: 0.7,
     color: colors.app_color_primary
   },

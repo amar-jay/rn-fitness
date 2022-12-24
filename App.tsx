@@ -8,7 +8,7 @@ import { Platform, StatusBar } from "react-native"
 
 import colors from "@/constants/colors"
 import { NavigationContainer } from "@react-navigation/native"
-import Navigation from "navigations"
+import Navigation from "./navigations"
 
 const PersistGate = ({ children }: any) => <>{children}</>
 

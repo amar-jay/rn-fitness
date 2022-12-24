@@ -78,7 +78,7 @@ const Routine = ({
 const styles = StyleSheet.create({
   header: {
     fontSize: 30,
-    fontFamily: "sans-serif-bold",
+    fontFamily: "sans-serif-condensed",
     letterSpacing: 0.7,
     color: colors.app_color_primary,
     top: 40,

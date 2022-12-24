@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   routinesHeader: {
     color: colors.description,
     fontSize: 18,
-    fontFamily: "Raleway-Bold",
+    fontFamily: "sans-serif-condensed",
     letterSpacing: 0.7,
     marginTop: 20,
     marginLeft: 20

@@ -9,9 +9,13 @@ import { MaterialIcons as Icon } from "@expo/vector-icons"
 import PauseTime from "@/components/Demo"
 import settings from "@/store/actions/settings"
 import colors from "@/constants/colors"
+import { SettingsState } from "@/store/reducers/settingsContext"
+import InfoCard from "@/components/InfoCard"
 
 const Settings = () => {
-  const settingState = useSelector((state: any) => state.settings)
+  const settingState: SettingsState = useSelector(
+    (state: any) => state.settings
+  )
   const dispatch = useDispatch()
 
   const [pauseTimeOptions, setOptions] = useState(settingState.pauseTimeOptions)
@@ -23,7 +27,7 @@ const Settings = () => {
   }
 
   const updateSound = () => {
-    const data = !soundInfo
+    const data: boolean = !soundInfo
     setSound(data)
     dispatch(settings.toggleSound(data))
   }
@@ -36,14 +40,22 @@ const Settings = () => {
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Settings</Text>
         </View>
+        <View style={styles.listContainer}>
+          <InfoCard
+            name={settingState.userName}
+            image={require("../assets/splash.png")}
+            style={styles.subContainer}
+          />
+        </View>
+        {/* <InfoCard style={styles.soundContainer} />
         <View style={styles.subContainer}>
-          {/* <PauseTime buttonsData={pauseTimeOptions} onClick={updatePauseTime} /> */}
+           <PauseTime buttonsData={pauseTimeOptions} onClick={updatePauseTime} /> 
           <Icon name="playlist-play" size={24} color="black" />
         </View>
         <View style={styles.soundContainer}>
           <Icon name="volume-up" size={24} color="black" />
-          {/* <Sound soundInfo={soundInfo} toggleSound={updateSound} /> */}
-        </View>
+          <Sound soundInfo={soundInfo} toggleSound={updateSound} /> 
+        </View> */}
       </View>
     </SafeAreaView>
   )
@@ -66,9 +78,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center"
   },
+  listContainer: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    top: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 20
+  },
   header: {
     fontSize: 40,
-    fontFamily: "sans-serif-bold",
+    fontFamily: "sans-serif-condensed",
+    letterSpacing: 1,
+    color: colors.app_color_primary
+  },
+  subHeader: {
+    fontSize: 24,
+    fontFamily: "sans-serif-condensed",
+    fontWeight: "bold",
     letterSpacing: 1,
     color: colors.app_color_primary
   }

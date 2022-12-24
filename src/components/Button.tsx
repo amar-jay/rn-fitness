@@ -1,17 +1,17 @@
-import React from 'react';
-import {Platform, Text, StyleSheet} from 'react-native';
-import {TouchableHighlight} from 'react-native-gesture-handler';
-import colors from '../constants/colors';
+import React from "react"
+import { Platform, Text, StyleSheet } from "react-native"
+import { TouchableHighlight } from "react-native-gesture-handler"
+import colors from "../constants/colors"
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+  heightPercentageToDP as hp
+} from "react-native-responsive-screen"
 interface Props {
-	textName: string,
-	onClick: () => void,
-	buttonWidth: string,
-	buttonHeight?: string,
-	bgColor?: string
+  textName: string
+  onClick: () => void
+  buttonWidth: string
+  buttonHeight?: string
+  bgColor?: string
 }
 
 const Button = ({
@@ -19,7 +19,7 @@ const Button = ({
   onClick,
   buttonWidth,
   buttonHeight,
-  bgColor,
+  bgColor
 }: Props) => {
   return (
     <TouchableHighlight
@@ -28,31 +28,35 @@ const Button = ({
         {
           width: wp(buttonWidth),
           height:
-            hp(buttonHeight!) || Platform.OS === 'android' ? hp('7%') : hp('5%'),
+            hp(buttonHeight!) || Platform.OS === "android"
+              ? hp("7%")
+              : hp("5%"),
           backgroundColor: bgColor || colors.app_Tint,
-          borderColor: bgColor || colors.app_Tint,
-        },
+          borderColor: bgColor || colors.app_Tint
+        }
       ]}
       onPress={onClick}
-      underlayColor={colors.app_color_primary}>
+      underlayColor={colors.app_color_primary}
+    >
       <Text style={styles.text}> {textName} </Text>
     </TouchableHighlight>
-  );
-};
-export default Button;
+  )
+}
+export default Button
 
 const styles = StyleSheet.create({
   text: {
     fontSize: 20,
-    color: 'white',
-    fontFamily: 'Raleway-Bold',
-    letterSpacing: 0.7,
+    color: "white",
+    fontFamily: "sans-serif-condensed",
+    letterSpacing: 0.7
   },
   cardContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     padding: 10,
     borderRadius: 20,
     borderColor: colors.app_Tint,
     backgroundColor: colors.app_Tint,
-    justifyContent: 'center',
-  }})
+    justifyContent: "center"
+  }
+})

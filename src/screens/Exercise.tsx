@@ -12,9 +12,7 @@ const Exercise = ({
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ExerciseCard
-        exImage={
-          route?.params?.exImage || require("../assets/adaptive-icon.png")
-        }
+        exImage={route?.params?.exImage || require("@/assets/splash.png")}
         exName={route?.params?.exName || "Exercise Name"}
         exDescription={route?.params?.exDescription || "Exercise Description"}
         exReps={"10"}
