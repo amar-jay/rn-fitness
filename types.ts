@@ -61,5 +61,16 @@ export interface StackParamList extends ParamListBase {
   LOGIN: undefined
 }
 
+<<<<<<< HEAD
+interface ButtonData {
+	id: `${number}`,
+	label: `${number}s`,
+	value: number,
+	selected: boolean
+}
+
+type ScreenProps<T,DrawerProps, StackProps> = T extends string? CompositeScreenProps<DrawerScreenProps<DrawerProps, T>, NativeStackScreenProps<StackProps>>: never;
+=======
 export type RoutineType = keyof typeof routines[0]
 export type Routine = typeof routines[0][RoutineType]
+>>>>>>> 0c3b7c4636f7b41870ffe3deb4191c7e4cd53ba4
