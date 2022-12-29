@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StackParamList } from "types";
+import { StackParamList, TabParamList } from "types";
 
 import UserContainer from "@/screens/UserContainer";
 
@@ -49,10 +49,7 @@ const Navigation: React.FC = () => {
         name={screenNames.Routine_playlist}
         component={RoutinePlaylist}
       />
-      <Stack.Screen
-        name={screenNames.Login}
-        component={Login}
-      />
+      <Stack.Screen name={screenNames.Login} component={Login} />
       {/* <Stack.Screen
         name={screenNames.EXERCISE_COMPLETED}
         component={CompleteExercise}

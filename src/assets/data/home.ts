@@ -1,11 +1,13 @@
-import { HomeData } from "types"
+import { HomeData } from "types";
 const data: HomeData[] = [
   {
     id: "0",
     routineDifficulty: "advance",
     routineData: {
       routine_name: "Get on the Rings",
-      routine_level: "Advance",
+      image: require("@/assets/icon.png"),
+      //routine_level: "Advance",
+      routine_description: "Just do it",
       routine_time: "40"
     },
     image: require("../images/exercise_1.jpeg"),
@@ -16,7 +18,9 @@ const data: HomeData[] = [
     routineDifficulty: "beginner",
     routineData: {
       routine_name: "Full Body Dips",
-      routine_level: "Beginner",
+      image: require("@/assets/icon.png"),
+      //routine_level: "Beginner",
+      routine_description: "Just do it",
       routine_time: "20"
     },
     image: require("../images/exercise_2.jpeg"),
@@ -27,7 +31,9 @@ const data: HomeData[] = [
     routineDifficulty: "intermediate",
     routineData: {
       routine_name: "Power Planches",
-      routine_level: "Intermediate",
+      image: require("@/assets/icon.png"),
+      //routine_level: "Intermediate",
+      routine_description: "Just do it",
       routine_time: "30"
     },
     image: require("../images/exercise_3.jpeg"),
@@ -49,12 +55,14 @@ const data: HomeData[] = [
     routineDifficulty: "advance",
     routineData: {
       routine_name: "Increase Mobility",
-      routine_level: "Advance",
+      //routine_level: "Advance",
+      routine_description: "Just do it",
+      image: require("@/assets/icon.png"),
       routine_time: "40"
     },
     image: require("../images/exercise_4.jpeg"),
     color: "#d5edf7"
   }
-]
+];
 
-export default data
+export default data;

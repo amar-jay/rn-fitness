@@ -4,9 +4,9 @@ import routines from "@/assets/data/routine";
 export type Dict<T> = { [K: string]: T };
 
 export interface SettingsData {
-  image?: any;
+  icon: any;
   description?: string;
-  name?: string;
+  name: string;
 }
 
 interface DispatchPropsFxn {
@@ -30,7 +30,7 @@ export interface HomeData {
   routineDifficulty: Level;
   routineData: {
     routine_name: string;
-    routine_level: Capitalize<Level>;
+    //    routine_level: Capitalize<Level>;
     routine_time: `${number}`;
     image: NodeRequire;
     routine_description: string;
@@ -46,7 +46,7 @@ export interface ButtonData {
   selected: boolean;
 }
 export interface StackParamList extends ParamListBase {
-  HOME: undefined;
+  HOME: { data: HomeData };
   ROUTINE: { routineType: RoutineType };
   EXERCISE: {
     exImage: NodeRequire;
@@ -59,6 +59,7 @@ export interface StackParamList extends ParamListBase {
   ROUTINE_PLAYLIST: { data: Routine };
   PROFILE: undefined;
   LOGIN: undefined;
+  SIGNUP: undefined;
 }
 
 /*

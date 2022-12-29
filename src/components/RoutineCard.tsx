@@ -1,9 +1,19 @@
 import React from "react";
 import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../constants/colors";
-import screenNames from "../constants/navigation";
+import screenNames, { ScreenNames } from "../constants/navigation";
 import { hp, wp } from "@/utils/screen-dimension";
-const RoutineCard = ({
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { StackParamList } from "types";
+
+interface Props
+  extends NativeStackScreenProps<StackParamList, ScreenNames["Home"]> {
+  image: any;
+  exerciseName: string;
+  exerciseDescription: string;
+  exerciseRep: string;
+}
+const RoutineCard: React.FC<Props> = ({
   image,
   navigation,
   exerciseName,

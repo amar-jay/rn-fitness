@@ -143,14 +143,14 @@ const routines = [
       }
     ]
   }
-] as Routine[]
+] as Routine[];
 
 interface Routine {
   [key: string]: {
-    id: string
-    routineName: string
-    routineDescription: string
-    image: any
-  }[]
+    id: string;
+    routineName: string;
+    routineDescription: string;
+    image: any;
+  }[];
 }
-export default routines
+export default routines;

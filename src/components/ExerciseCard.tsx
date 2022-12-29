@@ -3,7 +3,18 @@ import { View, Image, Text, StyleSheet } from "react-native";
 import colors from "../constants/colors";
 import { wp, hp } from "@/utils/screen-dimension";
 
-const ExerciseCard = ({ exImage, exName, exDescription, exReps }: any) => {
+interface Props {
+  exImage: any;
+  exName: string;
+  exDescription: string;
+  exReps: string;
+}
+const ExerciseCard: React.FC<Props> = ({
+  exImage,
+  exName,
+  exDescription,
+  exReps
+}) => {
   return (
     <>
       <View style={styles.container}>

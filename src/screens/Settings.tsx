@@ -1,38 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { FlatList, View, Text, StyleSheet } from "react-native";
-//import PauseTime from '@/components/PauseTime';
-//import Sound from '@/components/Sound';
+import { FlatList, View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { InfoCard, Touchable } from "@/components";
 import { wp } from "@/utils/screen-dimension";
+import alert from "@/utils/alert-message";
+import handleUrl from "@/utils/handle-url";
 import colors from "@/constants/colors";
-import { SettingsData } from "types";
-import InfoCard from "@/components/InfoCard";
+import { ScreenNames } from "@/constants/navigation";
+import type { SettingsData, StackParamList } from "types";
+//import Sound from '@/components/Sound';
+//import PauseTime from '@/components/PauseTime';
 
 const settingsData: SettingsData[] = [
   {
-    image: require("../assets/icon.png"),
+    icon: require("../assets/icon.png"),
     name: "Language"
   },
-
   {
-    image: require("../assets/icon.png"),
+    icon: require("../assets/icon.png"),
     name: "Edit"
   },
   {
-    image: require("../assets/icon.png"),
+    icon: require("../assets/icon.png"),
     name: "Dark Mode"
+  },
+  {
+    icon: require("../assets/icon.png"),
+    name: "About"
   }
 ];
-const Settings = () => {
+
+type Props = NativeStackScreenProps<StackParamList, ScreenNames["Home"]>;
+const Settings: React.FC<Props> = () => {
   const settingState = useSelector((state: any) => state.settings);
+
+  /*
 
   const [pauseTimeOptions, _setOptions] = useState(
     settingState.pauseTimeOptions
   );
   const [soundInfo, _setSound] = useState(settingState.soundInfo);
-
-  /*
   const _dispatch = useDispatch()
   const _updatePauseTime = () => {
     const data = settingState.pauseTimeOptions.filter((i: any) => i.selected)
@@ -45,31 +53,47 @@ const Settings = () => {
     dispatch(settings.toggleSound(data))
   }
 
-  */
   useEffect(() => {}, [pauseTimeOptions, soundInfo]);
-
+  */
   const renderItem = ({ item, index }: any) => {
+    const handlePress = () => {
+      switch (item.name) {
+        case "Language":
+          alert("Notification", "Only English is supported");
+          break;
+        case "Edit":
+          alert("Notification", "Unimplemented feature 🚧");
+          break;
+        case "Dark Mode":
+          console.log("Dark Mode");
+          alert("Notification", "Unimplemented feature 🚧");
+          break;
+        case "About":
+          handleUrl("https://www.themanan.me");
+      }
+    };
     return (
-      <InfoCard
-        key={index}
-        image={item?.image}
-        description={item?.description}
-        style={[
-          styles.subContainer,
-          {
-            top: 0,
-            width: wp(90),
-            paddingHorizontal: 10,
-            backgroundColor: colors.cardBG,
-            paddingVertical: 5,
-            borderRadius: 10
-          }
-        ]}
-        name={item?.name}
-      />
+      <Touchable onPress={handlePress}>
+        <InfoCard
+          key={index}
+          image={item?.icon}
+          description={item?.description}
+          style={[
+            styles.subContainer,
+            {
+              top: 0,
+              width: wp(90),
+              paddingHorizontal: 10,
+              backgroundColor: colors.cardBG,
+              paddingVertical: 5,
+              borderRadius: 10
+            }
+          ]}
+          name={item?.name}
+        />
+      </Touchable>
     );
   };
-
   return (
     <SafeAreaView
       style={{
@@ -89,7 +113,7 @@ const Settings = () => {
             styles.subContainer,
             { borderRadius: 0, width: wp(100), padding: 30 }
           ]}
-          description="Ad Exercitationem"
+          description={settingState.userEmail}
         />
         <FlatList
           style={{ flex: 1, marginTop: 20 }}
