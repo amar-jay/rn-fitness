@@ -2,11 +2,7 @@ import React from "react";
 import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../constants/colors";
 import screenNames from "../constants/navigation";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen";
-
+import { hp, wp } from "@/utils/screen-dimension";
 const RoutineCard = ({
   image,
   navigation,
@@ -34,10 +30,7 @@ const RoutineCard = ({
       >
         <Image
           source={image}
-          style={[
-            styles.imageContainer,
-            { width: wp("24%"), height: hp("12%") }
-          ]}
+          style={[styles.imageContainer, { width: wp(24), height: hp(12) }]}
         />
         <View style={styles.textContainer}>
           <Text style={styles.headContainer}>{exerciseName}</Text>

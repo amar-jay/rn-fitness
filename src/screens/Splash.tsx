@@ -2,11 +2,7 @@ import React, { useEffect } from "react";
 import { StyleSheet, StatusBar, SafeAreaView } from "react-native";
 import colors from "../constants/colors";
 import screenNames, { ScreenNames } from "../constants/navigation";
-
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen";
+import { wp, hp } from "@/utils/screen-dimension";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackParamList } from "types";
 import { Logo } from "@/components/Logo";
@@ -46,8 +42,8 @@ const Splash = ({
 
 const styles = StyleSheet.create({
   image: {
-    width: wp("80%"),
-    height: hp("40%"),
+    width: wp(80),
+    height: hp(40),
     marginBottom: 200
   },
   container: {

@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   Text,
   View,
@@ -7,34 +7,31 @@ import {
   BackHandler,
   Alert,
   StatusBar
-} from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
-import { useFocusEffect } from "@react-navigation/native"
-import { useSelector } from "react-redux"
-import Card from "@/components/Card"
-import Header from "@/components/Header"
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen"
-import colors from "@/constants/colors"
-import MainCard from "@/components/MainCard"
-import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { StackParamList } from "types"
-import { ScreenNames } from "@/constants/navigation"
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useFocusEffect } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import Card from "@/components/Card";
+import Header from "@/components/Header";
+import { wp, hp } from "@/utils/screen-dimension";
+import colors from "@/constants/colors";
+import MainCard from "@/components/MainCard";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { StackParamList } from "types";
+import { ScreenNames } from "@/constants/navigation";
 
-type Props = NativeStackScreenProps<StackParamList, ScreenNames["Home"]>
+type Props = NativeStackScreenProps<StackParamList, ScreenNames["Home"]>;
 const Home: React.FC<Props> = ({ navigation }) => {
-  const home = useSelector((state: any) => state.home)
+  const home = useSelector((state: any) => state.home);
 
   useFocusEffect(
     React.useCallback(() => {
-      BackHandler.addEventListener("hardwareBackPress", backAction)
+      BackHandler.addEventListener("hardwareBackPress", backAction);
 
       return () =>
-        BackHandler.removeEventListener("hardwareBackPress", backAction)
+        BackHandler.removeEventListener("hardwareBackPress", backAction);
     }, [])
-  )
+  );
 
   const backAction = () => {
     Alert.alert("Exit App", "Are you sure you want to exit?", [
@@ -44,10 +41,10 @@ const Home: React.FC<Props> = ({ navigation }) => {
         style: "cancel"
       },
       { text: "YES", onPress: () => BackHandler.exitApp() }
-    ])
+    ]);
 
-    return true
-  }
+    return true;
+  };
 
   const renderItem = ({ item }: any) => {
     return (
@@ -57,8 +54,8 @@ const Home: React.FC<Props> = ({ navigation }) => {
         routineData={item.routineData}
         cardColor={item.color}
       />
-    )
-  }
+    );
+  };
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -94,8 +91,8 @@ const Home: React.FC<Props> = ({ navigation }) => {
         />
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   routinesHeader: {
@@ -123,12 +120,12 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: colors.secondary_container,
-    height: hp("65%"),
-    width: wp("100%"),
-    marginTop: hp("35%"),
+    height: hp(65),
+    width: wp(100),
+    marginTop: hp(35),
     position: "absolute",
     zIndex: -1
   }
-})
+});
 
-export default Home
+export default Home;

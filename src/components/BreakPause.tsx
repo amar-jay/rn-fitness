@@ -3,10 +3,7 @@ import { SafeAreaView, Image, View, Text, StyleSheet } from "react-native";
 import colors, { countdownColors } from "../constants/colors";
 import NativeButton from "./Button";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen";
+import { hp, wp } from "@/utils/screen-dimension";
 
 import { Audio } from "expo-av";
 import { useSelector } from "react-redux";
@@ -36,7 +33,7 @@ const BreakPause: React.FC<Props> = ({ currentIndex, toggleButton }) => {
       {currentIndex === 0 ? (
         <View style={styles.container}>
           <View style={styles.imageContainer}>
-            <Image style={{ width: wp("80%"), height: hp("40%") }} />
+            <Image style={{ width: wp(80), height: hp(40) }} />
           </View>
           <View style={styles.info}>
             <Text style={styles.textContainer}>Let's Begin</Text>
