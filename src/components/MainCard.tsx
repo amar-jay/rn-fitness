@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   TouchableOpacity,
   View,
@@ -6,22 +6,19 @@ import {
   Image,
   StyleSheet,
   Platform
-} from "react-native"
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen"
-import colors from "@/constants/colors"
-import { RoutineType } from "types"
-import screenNames from "@/constants/navigation"
+} from "react-native";
+import { wp, hp } from "@/utils/screen-dimension";
+import colors from "@/constants/colors";
+import { RoutineType } from "types";
+import screenNames from "@/constants/navigation";
 
 interface Props {
-  routineType: RoutineType
-  image: any
-  headerText: string
-  subHeaderText: string
-  timeText: string
-  navigation: any
+  routineType: RoutineType;
+  image: any;
+  headerText: string;
+  subHeaderText: string;
+  timeText: string;
+  navigation: any;
 }
 const MainCard: React.FC<Props> = ({
   routineType,
@@ -36,7 +33,7 @@ const MainCard: React.FC<Props> = ({
       onPress={() => {
         navigation.navigate(screenNames.Routine, {
           routineType: routineType
-        })
+        });
       }}
     >
       <View style={styles.cardContainer}>
@@ -71,10 +68,10 @@ const MainCard: React.FC<Props> = ({
         </View>
       </View>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
-export default MainCard
+export default MainCard;
 
 const styles = StyleSheet.create({
   planContainer: {
@@ -88,7 +85,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5
   },
   timeContainer: {
-    marginTop: Platform.OS === "android" ? hp("18%") : hp("20%"),
+    marginTop: Platform.OS === "android" ? hp(18) : hp(20),
     fontSize: 20,
     fontFamily: "sans-serif-condensed",
     fontWeight: "700",
@@ -100,7 +97,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   leftContainer: {
-    marginTop: Platform.OS === "android" ? hp("2%") : hp("3%"),
+    marginTop: Platform.OS === "android" ? hp(2) : hp(3),
     flexDirection: "column",
     marginRight: 60
   },
@@ -115,8 +112,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly"
   },
   buttonContainer: {
-    height: hp("10%"),
-    width: wp("50%"),
+    height: hp(10),
+    width: wp(50),
     position: "absolute",
     bottom: 1,
     right: -30
@@ -128,7 +125,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: colors.soundInfo,
     justifyContent: "center",
-    height: hp("35%")
+    height: hp(35)
   },
   imageContainer: {
     bottom: 40,
@@ -143,6 +140,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: colors.app_color_primary,
     fontFamily: "sans-serif-medium",
-    width: wp("35%")
+    width: wp(35)
   }
-})
+});

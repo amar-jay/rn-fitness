@@ -1,17 +1,14 @@
-import React from "react"
-import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native"
-import screenNames from "@/constants/navigation"
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen"
-import colors from "@/constants/colors"
+import React from "react";
+import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import screenNames from "@/constants/navigation";
+import { wp, hp } from "@/utils/screen-dimension";
+import colors from "@/constants/colors";
 
 interface Props {
-  image: any
-  navigation: any
-  routineData: any
-  cardColor: any
+  image: any;
+  navigation: any;
+  routineData: any;
+  cardColor: any;
 }
 const Card: React.FC<Props> = ({
   image,
@@ -33,7 +30,7 @@ const Card: React.FC<Props> = ({
           source={image}
           style={[
             styles.imageContainer,
-            { width: wp("55%"), height: hp("25%"), borderRadius: 20 }
+            { width: wp(55), height: hp(25), borderRadius: 20 }
           ]}
         />
       </View>
@@ -43,9 +40,9 @@ const Card: React.FC<Props> = ({
         </Text>
       </View>
     </TouchableOpacity>
-  )
-}
-export default Card
+  );
+};
+export default Card;
 
 const styles = StyleSheet.create({
   container: {
@@ -74,4 +71,4 @@ const styles = StyleSheet.create({
     letterSpacing: 2
   },
   imageContainer: {}
-})
+});

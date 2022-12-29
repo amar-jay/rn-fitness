@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { SafeAreaView } from "react-native-safe-area-context"
-import { FlatList, View, Text, StyleSheet } from "react-native"
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { FlatList, View, Text, StyleSheet } from "react-native";
 //import PauseTime from '@/components/PauseTime';
 //import Sound from '@/components/Sound';
-import { widthPercentageToDP as wp } from "react-native-responsive-screen"
-import colors from "@/constants/colors"
-import { SettingsData } from "types"
-import InfoCard from "@/components/InfoCard"
+import { wp } from "@/utils/screen-dimension";
+import colors from "@/constants/colors";
+import { SettingsData } from "types";
+import InfoCard from "@/components/InfoCard";
 
 const settingsData: SettingsData[] = [
   {
@@ -23,14 +23,14 @@ const settingsData: SettingsData[] = [
     image: require("../assets/icon.png"),
     name: "Dark Mode"
   }
-]
+];
 const Settings = () => {
-  const settingState = useSelector((state: any) => state.settings)
+  const settingState = useSelector((state: any) => state.settings);
 
   const [pauseTimeOptions, _setOptions] = useState(
     settingState.pauseTimeOptions
-  )
-  const [soundInfo, _setSound] = useState(settingState.soundInfo)
+  );
+  const [soundInfo, _setSound] = useState(settingState.soundInfo);
 
   /*
   const _dispatch = useDispatch()
@@ -46,7 +46,7 @@ const Settings = () => {
   }
 
   */
-  useEffect(() => {}, [pauseTimeOptions, soundInfo])
+  useEffect(() => {}, [pauseTimeOptions, soundInfo]);
 
   const renderItem = ({ item, index }: any) => {
     return (
@@ -58,7 +58,7 @@ const Settings = () => {
           styles.subContainer,
           {
             top: 0,
-            width: wp("90%"),
+            width: wp(90),
             paddingHorizontal: 10,
             backgroundColor: colors.cardBG,
             paddingVertical: 5,
@@ -67,8 +67,8 @@ const Settings = () => {
         ]}
         name={item?.name}
       />
-    )
-  }
+    );
+  };
 
   return (
     <SafeAreaView
@@ -87,7 +87,7 @@ const Settings = () => {
           image={require("../assets/images/exercise_1.jpeg")}
           style={[
             styles.subContainer,
-            { borderRadius: 0, width: wp("100%"), padding: 30 }
+            { borderRadius: 0, width: wp(100), padding: 30 }
           ]}
           description="Ad Exercitationem"
         />
@@ -108,8 +108,8 @@ const Settings = () => {
         </View> */}
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   subContainer: {
@@ -147,6 +147,6 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     color: colors.app_color_primary
   }
-})
+});
 
-export default Settings
+export default Settings;
