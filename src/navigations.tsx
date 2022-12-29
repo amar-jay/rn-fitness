@@ -1,32 +1,32 @@
-import { createStackNavigator } from "@react-navigation/stack"
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { StackParamList } from "types"
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { StackParamList } from "types";
 
-import UserContainer from "@/screens/UserContainer"
+import UserContainer from "@/screens/UserContainer";
 
-import Home from "@/screens/Home"
-import Exercise from "@/screens/Exercise"
-import RoutineList from "@/screens/RoutineList"
-import ListExercise from "@/screens/ListExercises"
+import Home from "@/screens/Home";
+import Exercise from "@/screens/Exercise";
+import RoutineList from "@/screens/RoutineList";
+import ListExercise from "@/screens/ListExercises";
 /*
 import Settings from '@/screens/Settings';
 import RoutinePlaylist from "@/screens/RoutinePlayList"
 import CompleteExercise from '@/screens/CompleteExercise';
 */
 
-import screenNames from "@/constants/navigation"
-import { MaterialIcons as Icon } from "@expo/vector-icons"
-import Splash from "@/screens/Splash"
+import screenNames from "@/constants/navigation";
+import { MaterialIcons as Icon } from "@expo/vector-icons";
+import Splash from "@/screens/Splash";
 
-import { heightPercentageToDP as hp } from "react-native-responsive-screen"
-import { Platform } from "react-native"
-import colors from "@/constants/colors"
-import Settings from "@/screens/Settings"
-import RoutinePlaylist from "@/screens/RoutinePlayList"
+import { hp } from "@/utils/screen-dimension";
+import { Platform } from "react-native";
+import colors from "@/constants/colors";
+import Settings from "@/screens/Settings";
+import RoutinePlaylist from "@/screens/RoutinePlayList";
 
-const Stack = createStackNavigator<StackParamList>()
-const Tab = createBottomTabNavigator()
-const iconSize = 30
+const Stack = createStackNavigator<StackParamList>();
+const Tab = createBottomTabNavigator();
+const iconSize = 30;
 
 const Navigation: React.FC = () => {
   return (
@@ -58,15 +58,15 @@ const Navigation: React.FC = () => {
 
        */}
     </Stack.Navigator>
-  )
-}
+  );
+};
 
 const TabNav = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
         style: {
-          height: Platform.OS === "android" ? hp("8.2%") : hp("8.2%"),
+          height: Platform.OS === "android" ? hp(8.2) : hp(8.2),
           justifyContent: "center",
           paddingBottom: Platform.OS === "android" ? 10 : 15,
           backgroundColor: colors.secondary_container
@@ -93,7 +93,7 @@ const TabNav = () => {
                 }
                 style={{ top: 10 }}
               />
-            )
+            );
           }
         }}
       />
@@ -115,7 +115,7 @@ const TabNav = () => {
                 }
                 style={{ top: 10 }}
               />
-            )
+            );
           }
         }}
       />
@@ -139,12 +139,12 @@ const TabNav = () => {
                 }
                 style={{ top: 10 }}
               />
-            )
+            );
           }
         }}
       />
     </Tab.Navigator>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

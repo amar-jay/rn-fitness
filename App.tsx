@@ -8,7 +8,7 @@ import { Platform, StatusBar } from "react-native";
 
 import { colorAtom } from "@/store/atoms/colors";
 import { NavigationContainer } from "@react-navigation/native";
-import Navigation from "./navigations";
+import Navigation from "./src/navigations";
 import { useAtom } from "jotai";
 
 const PersistGate = ({ children }: any) => <>{children}</>;
