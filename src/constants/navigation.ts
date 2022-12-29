@@ -9,6 +9,8 @@ const screenNames = {
   Splash_screen: "SPLASH_SCREEN",
   User_container: "USER_CONTAINER",
   List_exercise: "LIST_EXERCISE",
+  Login: "LOGIN",
+  Signup: "SIGNUP",
   Analysis: "ANALYSIS"
 } as const
 

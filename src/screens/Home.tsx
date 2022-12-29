@@ -62,7 +62,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
       <StatusBar backgroundColor={colors.solidWhite} barStyle="dark-content" />
       <View style={{ backgroundColor: colors.solidWhite }}>
         <Header
-          userName={"Amar Jay Trainer"}
+          name={"Amar Jay Trainer"}
           mainCardHeader={"Today Workout"}
         />
         <MainCard

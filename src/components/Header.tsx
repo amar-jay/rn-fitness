@@ -2,10 +2,10 @@ import React from "react"
 import { View, Text, StyleSheet } from "react-native"
 import colors from "@/constants/colors"
 interface Props {
-  userName: string
+  name: string
   mainCardHeader: string
 }
-const Header: React.FC<Props> = ({ userName, mainCardHeader }) => {
+const Header: React.FC<Props> = ({ name, mainCardHeader }) => {
   return (
     <>
       <View
@@ -16,7 +16,7 @@ const Header: React.FC<Props> = ({ userName, mainCardHeader }) => {
           justifyContent: "center"
         }}
       >
-        <Text style={styles.header}>{userName}</Text>
+        <Text style={styles.header}>{name}</Text>
       </View>
       <Text style={styles.subTitle}>{mainCardHeader}</Text>
     </>

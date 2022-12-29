@@ -8,9 +8,10 @@ import Home from "@/screens/Home";
 import Exercise from "@/screens/Exercise";
 import RoutineList from "@/screens/RoutineList";
 import ListExercise from "@/screens/ListExercises";
+import Settings from "@/screens/Settings";
+import RoutinePlaylist from "@/screens/RoutinePlayList";
+import Login from "@/screens/Login";
 /*
-import Settings from '@/screens/Settings';
-import RoutinePlaylist from "@/screens/RoutinePlayList"
 import CompleteExercise from '@/screens/CompleteExercise';
 */
 
@@ -21,8 +22,6 @@ import Splash from "@/screens/Splash";
 import { hp } from "@/utils/screen-dimension";
 import { Platform } from "react-native";
 import colors from "@/constants/colors";
-import Settings from "@/screens/Settings";
-import RoutinePlaylist from "@/screens/RoutinePlayList";
 
 const Stack = createStackNavigator<StackParamList>();
 const Tab = createBottomTabNavigator();
@@ -49,6 +48,10 @@ const Navigation: React.FC = () => {
       <Stack.Screen
         name={screenNames.Routine_playlist}
         component={RoutinePlaylist}
+      />
+      <Stack.Screen
+        name={screenNames.Login}
+        component={Login}
       />
       {/* <Stack.Screen
         name={screenNames.EXERCISE_COMPLETED}
