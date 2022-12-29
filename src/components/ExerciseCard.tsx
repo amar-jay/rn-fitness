@@ -1,10 +1,7 @@
-import React from "react"
-import { View, Image, Text, StyleSheet } from "react-native"
-import colors from "../constants/colors"
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen"
+import React from "react";
+import { View, Image, Text, StyleSheet } from "react-native";
+import colors from "../constants/colors";
+import { wp, hp } from "@/utils/screen-dimension";
 
 const ExerciseCard = ({ exImage, exName, exDescription, exReps }: any) => {
   return (
@@ -12,10 +9,7 @@ const ExerciseCard = ({ exImage, exName, exDescription, exReps }: any) => {
       <View style={styles.container}>
         <Image
           source={exImage}
-          style={[
-            styles.imageContainer,
-            { width: wp("90%"), height: hp("50%") }
-          ]}
+          style={[styles.imageContainer, { width: wp(90), height: hp(50) }]}
           resizeMode="contain"
         />
       </View>
@@ -24,8 +18,8 @@ const ExerciseCard = ({ exImage, exName, exDescription, exReps }: any) => {
         <Text style={styles.paraContainer}>{exDescription}</Text>
       </View>
     </>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   headContainer: {
@@ -41,7 +35,7 @@ const styles = StyleSheet.create({
   },
   container: {
     margin: 30,
-    height: hp("60%"),
+    height: hp(60),
     marginHorizontal: 20,
     alignItems: "center"
   },
@@ -70,6 +64,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontWeight: "500"
   }
-})
+});
 
-export default ExerciseCard
+export default ExerciseCard;

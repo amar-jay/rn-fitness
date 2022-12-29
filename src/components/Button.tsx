@@ -1,17 +1,14 @@
-import React from "react"
-import { Platform, Text, StyleSheet } from "react-native"
-import { TouchableHighlight } from "react-native-gesture-handler"
-import colors from "../constants/colors"
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen"
+import React from "react";
+import { Platform, Text, StyleSheet } from "react-native";
+import { TouchableHighlight } from "react-native-gesture-handler";
+import colors from "../constants/colors";
+import { wp, hp } from "@/utils/screen-dimension";
 interface Props {
-  textName: string
-  onClick: () => void
-  buttonWidth: string
-  buttonHeight?: string
-  bgColor?: string
+  textName: string;
+  onClick: () => void;
+  buttonWidth: number;
+  buttonHeight?: number;
+  bgColor?: string;
 }
 
 const Button = ({
@@ -28,9 +25,7 @@ const Button = ({
         {
           width: wp(buttonWidth),
           height:
-            hp(buttonHeight!) || Platform.OS === "android"
-              ? hp("7%")
-              : hp("5%"),
+            hp(buttonHeight!) || Platform.OS === "android" ? hp(7) : hp(5),
           backgroundColor: bgColor || colors.app_Tint,
           borderColor: bgColor || colors.app_Tint
         }
@@ -40,9 +35,9 @@ const Button = ({
     >
       <Text style={styles.text}> {textName} </Text>
     </TouchableHighlight>
-  )
-}
-export default Button
+  );
+};
+export default Button;
 
 const styles = StyleSheet.create({
   text: {
@@ -59,4 +54,4 @@ const styles = StyleSheet.create({
     backgroundColor: colors.app_Tint,
     justifyContent: "center"
   }
-})
+});

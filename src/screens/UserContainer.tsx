@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -10,40 +10,37 @@ import {
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
   SafeAreaView
-} from "react-native"
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen"
-import NativeButton from "@/components/Button"
-import colors from "../constants/colors"
-import screenNames from "../constants/navigation"
-import { useDispatch } from "react-redux"
-import { homeActions } from "@/store/actions/home"
+} from "react-native";
+import { wp, hp } from "@/utils/screen-dimension";
+import NativeButton from "@/components/Button";
+import colors from "../constants/colors";
+import screenNames from "../constants/navigation";
+import { useDispatch } from "react-redux";
+import { homeActions } from "@/store/actions/home";
 
 const UserContainer = ({ navigation }: any) => {
-  const [user, setUser] = useState("")
+  const [user, setUser] = useState("");
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onNext = () => {
-    const validate = new RegExp("^\\w[\\w.]{2,18}\\w$") //validate user-name
+    const validate = new RegExp("^\\w[\\w.]{2,18}\\w$"); //validate user-name
 
     if (user.match(validate)) {
       const data = {
         userName: user
-      }
-      dispatch(homeActions.setUserData(data))
-      navigation.navigate(screenNames.Home)
+      };
+      dispatch(homeActions.setUserData(data));
+      navigation.navigate(screenNames.Home);
     } else {
       Alert.alert(
         "Please fill the required details",
         "Username should be between 4 to 20 characters"
-      )
+      );
     }
 
     // to-do improve info here
-  }
+  };
   return (
     <SafeAreaView style={styles.mainContainer}>
       <KeyboardAvoidingView
@@ -68,22 +65,22 @@ const UserContainer = ({ navigation }: any) => {
               <NativeButton
                 textName="Next"
                 onClick={() => onNext()}
-                buttonWidth={"60%"}
+                buttonWidth={60}
               />
             </View>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "column",
     justifyContent: "flex-end",
     alignItems: "center",
-    top: hp("10%")
+    top: hp(10)
   },
   header: {
     fontSize: 30,
@@ -94,8 +91,8 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: colors.solidWhite,
-    height: hp("65%"),
-    width: wp("100%"),
+    height: hp(65),
+    width: wp(100),
     borderTopRightRadius: 80,
     borderTopLeftRadius: 80,
     marginTop: 300
@@ -108,13 +105,13 @@ const styles = StyleSheet.create({
   },
   subHeader: {
     marginHorizontal: 30,
-    marginTop: hp("10%")
+    marginTop: hp(10)
   },
   userInput: {
     marginTop: 20,
     borderColor: colors.app_color_secondary,
     borderWidth: 1,
-    height: hp("5%")
+    height: hp(5)
   }
-})
-export default UserContainer
+});
+export default UserContainer;

@@ -71,7 +71,7 @@ const BreakPause: React.FC<Props> = ({ currentIndex, toggleButton }) => {
               <NativeButton
                 textName="SKIP"
                 onClick={() => toggleButton()}
-                buttonWidth={"30%"}
+                buttonWidth={30}
               />
             </View>
           </View>
