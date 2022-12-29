@@ -11,13 +11,13 @@ interface Props {
   bgColor?: string;
 }
 
-const Button = ({
+const Button: React.FC<Props> = ({
   textName,
   onClick,
   buttonWidth,
   buttonHeight,
   bgColor
-}: Props) => {
+}) => {
   return (
     <TouchableHighlight
       style={[
