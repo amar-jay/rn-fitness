@@ -1,21 +1,22 @@
-import React, { useEffect } from "react"
-import { StyleSheet, StatusBar, SafeAreaView } from "react-native"
-import colors from "../constants/colors"
-import screenNames, { ScreenNames } from "../constants/navigation"
+import React, { useEffect } from "react";
+import { StyleSheet, StatusBar, SafeAreaView } from "react-native";
+import colors from "../constants/colors";
+import screenNames, { ScreenNames } from "../constants/navigation";
 
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
-} from "react-native-responsive-screen"
-import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { StackParamList } from "types"
+} from "react-native-responsive-screen";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { StackParamList } from "types";
+import { Logo } from "@/components/Logo";
 
 const Splash = ({
   navigation
 }: NativeStackScreenProps<StackParamList, ScreenNames["Splash_screen"]>) => {
   useEffect(() => {
-    setTimeout(() => checkFirstLogin(), 1000)
-  }, [])
+    setTimeout(() => checkFirstLogin(), 1000);
+  }, []);
 
   const checkFirstLogin = async () => {
     try {
@@ -26,11 +27,11 @@ const Splash = ({
       } else {
         navigation.navigate(screenNames.HOME);
       } */
-      navigation.navigate(screenNames.Home)
+      navigation.navigate(screenNames.Home);
     } catch (e) {
-      console.log("async error", e)
+      console.error("navigation error", e);
     }
-  }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor={colors.app_Tint} barStyle="light-content" />
@@ -38,9 +39,10 @@ const Splash = ({
         source={require("@expo/snack-static/react-native-logo.png")}
         style={styles.image}
       /> */}
+      <Logo />
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   image: {
@@ -60,6 +62,6 @@ const styles = StyleSheet.create({
     color: colors.solidWhite,
     letterSpacing: 0.5
   }
-})
+});
 
-export default Splash
+export default Splash;
