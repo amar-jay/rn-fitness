@@ -1,11 +1,11 @@
-import React from "react"
-import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native"
-import colors from "../constants/colors"
-import screenNames from "../constants/navigation"
+import React from "react";
+import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import colors from "../constants/colors";
+import screenNames from "../constants/navigation";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
-} from "react-native-responsive-screen"
+} from "react-native-responsive-screen";
 
 const RoutineCard = ({
   image,
@@ -51,9 +51,9 @@ const RoutineCard = ({
         </View>
       </TouchableOpacity>
     </View>
-  )
-}
-export default RoutineCard
+  );
+};
+export default RoutineCard;
 
 const styles = StyleSheet.create({
   container: {
@@ -90,4 +90,4 @@ const styles = StyleSheet.create({
     borderRadius: 20
     //borderWidth: 2,
   }
-})
+});
