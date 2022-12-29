@@ -12,9 +12,9 @@ import Navigation from "./src/navigations";
 import { useAtom } from "jotai";
 
 const PersistGate = ({ children }: any) => <>{children}</>;
-const [colors] = useAtom(colorAtom);
 
 const App = () => {
+  const [colors] = useAtom(colorAtom);
   return (
     <>
       {Platform.OS === "android" ? (
