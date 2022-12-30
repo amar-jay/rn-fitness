@@ -6,19 +6,17 @@ import {
   StyleSheet,
   BackHandler,
   Alert,
-  StatusBar
+  StatusBar,
+  SafeAreaView
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useFocusEffect } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useSelector } from "react-redux";
-import Card from "@/components/Card";
-import Header from "@/components/Header";
+import { Card, Header, MainCard } from "@/components/";
 import { wp, hp } from "@/utils/screen-dimension";
 import colors from "@/constants/colors";
-import MainCard from "@/components/MainCard";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackParamList } from "types";
 import { ScreenNames } from "@/constants/navigation";
+import { StackParamList } from "types";
 
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Home"]>;
 const Home: React.FC<Props> = ({ navigation }) => {
@@ -61,10 +59,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
     <SafeAreaView style={styles.mainContainer}>
       <StatusBar backgroundColor={colors.solidWhite} barStyle="dark-content" />
       <View style={{ backgroundColor: colors.solidWhite }}>
-        <Header
-          name={"Amar Jay Trainer"}
-          mainCardHeader={"Today Workout"}
-        />
+        <Header name={"Amar Jay Trainer"} mainCardHeader={"Today Workout"} />
         <MainCard
           image={require("../assets/icon.png")}
           headerText={"Legs of Iron"}

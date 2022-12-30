@@ -1,14 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { FlatList, View, Text, StyleSheet, SafeAreaView } from "react-native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { InfoCard, Touchable } from "@/components";
 import { wp } from "@/utils/screen-dimension";
 import alert from "@/utils/alert-message";
 import handleUrl from "@/utils/handle-url";
 import colors from "@/constants/colors";
-import { ScreenNames } from "@/constants/navigation";
-import type { SettingsData, StackParamList } from "types";
+import type { SettingsData } from "types";
 //import Sound from '@/components/Sound';
 //import PauseTime from '@/components/PauseTime';
 
@@ -31,8 +29,8 @@ const settingsData: SettingsData[] = [
   }
 ];
 
-type Props = NativeStackScreenProps<StackParamList, ScreenNames["Home"]>;
-const Settings: React.FC<Props> = () => {
+//type Props = NativeStackScreenProps<StackParamList, ScreenNames["Settings"]>;
+const Settings: React.FC<{}> = () => {
   const settingState = useSelector((state: any) => state.settings);
 
   /*

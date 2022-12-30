@@ -7,11 +7,14 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackParamList } from "types";
 
 interface Props
-  extends NativeStackScreenProps<StackParamList, ScreenNames["Home"]> {
+  extends Omit<
+    NativeStackScreenProps<StackParamList, ScreenNames[keyof ScreenNames]>,
+    "route"
+  > {
   image: any;
   exerciseName: string;
   exerciseDescription: string;
-  exerciseRep: string;
+  exerciseRep?: string;
 }
 const RoutineCard: React.FC<Props> = ({
   image,

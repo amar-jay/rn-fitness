@@ -8,7 +8,8 @@ interface Props {
   onClick: () => void;
   buttonWidth: number;
   buttonHeight?: number;
-  bgColor?: string;
+  inverse?: boolean;
+  //bgColor?: string;
 }
 
 const Button: React.FC<Props> = ({
@@ -16,7 +17,8 @@ const Button: React.FC<Props> = ({
   onClick,
   buttonWidth,
   buttonHeight,
-  bgColor
+  //bgColor
+  inverse = false
 }) => {
   return (
     <TouchableHighlight
@@ -26,14 +28,21 @@ const Button: React.FC<Props> = ({
           width: wp(buttonWidth),
           height:
             hp(buttonHeight!) || Platform.OS === "android" ? hp(7) : hp(5),
-          backgroundColor: bgColor || colors.app_Tint,
-          borderColor: bgColor || colors.app_Tint
+          backgroundColor: !inverse ? colors.app_Tint : colors.homeBG,
+          borderColor: colors.app_Tint
         }
       ]}
       onPress={onClick}
       underlayColor={colors.app_color_primary}
     >
-      <Text style={styles.text}> {textName} </Text>
+      <Text
+        style={[
+          styles.text,
+          { color: !inverse ? colors.homeBG : colors.app_Tint }
+        ]}
+      >
+        {textName}
+      </Text>
     </TouchableHighlight>
   );
 };
@@ -42,7 +51,6 @@ export default Button;
 const styles = StyleSheet.create({
   text: {
     fontSize: 20,
-    color: "white",
     fontFamily: "sans-serif-condensed",
     letterSpacing: 0.7
   },

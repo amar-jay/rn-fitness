@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StackParamList, TabParamList } from "types";
+import { StackParamList } from "types";
 
 import UserContainer from "@/screens/UserContainer";
 
@@ -22,6 +22,7 @@ import Splash from "@/screens/Splash";
 import { hp } from "@/utils/screen-dimension";
 import { Platform } from "react-native";
 import colors from "@/constants/colors";
+import Signup from "./screens/Signup";
 
 const Stack = createStackNavigator<StackParamList>();
 const Tab = createBottomTabNavigator();
@@ -50,6 +51,7 @@ const Navigation: React.FC = () => {
         component={RoutinePlaylist}
       />
       <Stack.Screen name={screenNames.Login} component={Login} />
+      <Stack.Screen name={screenNames.Signup} component={Signup} />
       {/* <Stack.Screen
         name={screenNames.EXERCISE_COMPLETED}
         component={CompleteExercise}
@@ -64,14 +66,15 @@ const Navigation: React.FC = () => {
 const TabNav = () => {
   return (
     <Tab.Navigator
-      tabBarOptions={{
-        style: {
+      screenOptions={({ route }) => ({
+        //tabBarVisible: route.name === screenNames.Home ? true : false,
+        tabBarStyle: {
           height: Platform.OS === "android" ? hp(8.2) : hp(8.2),
           justifyContent: "center",
           paddingBottom: Platform.OS === "android" ? 10 : 15,
           backgroundColor: colors.secondary_container
         }
-      }}
+      })}
     >
       <Tab.Screen
         name={screenNames.Home}

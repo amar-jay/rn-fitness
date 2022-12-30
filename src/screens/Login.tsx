@@ -1,50 +1,115 @@
 // Login screen
-
-//import colors from "@/constants/colors"
-import { colorAtom } from "@/store/atoms/colors"
-import { useState } from "react"
-import { useAtom} from "jotai";
-import { View, SafeAreaView, StyleSheet, TextInput } from "react-native"
+import { useState } from "react";
+import { View, SafeAreaView, StyleSheet, TextInput } from "react-native";
 import Button from "@/components/Button";
-import { ScreenNames } from "@/constants/navigation";
+import screenNames, { ScreenNames } from "@/constants/navigation";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackParamList } from "types";
+import alert from "@/utils/alert-message";
 import Header from "@/components/Header";
-
+import { hp } from "@/utils/screen-dimension";
+import {
+  validateEmail,
+  validatePassword
+} from "@/utils/client-side-validation";
+import { signInWithEmailAndPassword } from "@/utils/firebase";
 
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Login"]>;
-const Login:React.FC<Props> = ({navigation}) => {
+const Login: React.FC<Props> = ({ navigation }) => {
+  const handleSignIn = () => {
+    if (!email) {
+      alert("Sign In", "Please enter email");
+      return;
+    }
+    if (!password) {
+      alert("Sign In", "Please enter password");
+      return;
+    }
 
-	const [colors] = useAtom(colorAtom);
+    if (password.length < 6) {
+      setPassword("");
+      alert("Sign In", "Password should be at least 6 characters");
+      return;
+    }
 
-	const handleSignIn = () => {};
-	const handleSignUp = () => {
-		navigation.navigate(screenNames.SIGNUP)
-	};
-	const [email, setEmail] = useState("")
-	const [password, setPassword] = useState("")
-	return (
-		<SafeAreaView style={[styles.container, {backgroundColor:colors.app_Tint}]}>
-			<Header  name={"Login"} mainCardHeader={""}/>
-			<View>
-				<TextInput value={email} editable maxLength={60} onChangeText={e => setEmail(e)}/>
-				<TextInput value={password} editable onChangeText={e => setPassword(e)}/>
-				<Button textName={"Sign In"}  buttonWidth={64}  onClick={handleSignIn}/>
-			</View>
+    if (!validateEmail(email)) {
+      setEmail("");
+      alert("Sign Up", "Invalid email");
+      return;
+    }
 
-				<Button textName={"Sign Up"} buttonWidth={64} onClick={handleSignUp}/>
-		</SafeAreaView>
-	)
+    if (!validatePassword(password)) {
+      setPassword("");
+      alert("Sign In", "Invalid password");
+      return;
+    }
 
-}
+    signInWithEmailAndPassword(email, password)
+      .then(() => {
+        alert("Sign In", "Signed In Successfully");
+      })
+      .catch(error => {
+        alert("Sign In", error.message);
+        setEmail("");
+        setPassword("");
+      });
+  };
+  const handleSignUp = () => {
+    navigation.navigate(screenNames.Signup);
+  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  return (
+    <SafeAreaView style={[styles.container]}>
+      <Header name={"Login"} mainCardHeader={""} />
+      <View>
+        <TextInput
+          value={email}
+          keyboardType="email-address"
+          editable
+          maxLength={60}
+          style={styles.input}
+          onChangeText={e => setEmail(e)}
+          placeholder="me@me.me"
+        />
+        <TextInput
+          value={password}
+          secureTextEntry
+          autoCorrect={false}
+          placeholder="password"
+          //keyboardType="visible-password"
+          editable
+          style={styles.input}
+          onChangeText={e => setPassword(e)}
+        />
+        <Button textName={"Sign In"} buttonWidth={64} onClick={handleSignIn} />
+      </View>
+
+      <Button
+        textName={"Sign Up"}
+        inverse
+        buttonWidth={30}
+        onClick={handleSignUp}
+      />
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-	paddingVertical: 10,
+    paddingVertical: hp(10),
     flex: 1,
     alignItems: "center",
     justifyContent: "space-between"
   },
-})
+  input: {
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 20,
+    fontSize: 18,
+    backgroundColor: "#ddd"
+  }
+});
 
 export default Login;

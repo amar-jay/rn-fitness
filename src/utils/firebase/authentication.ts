@@ -6,10 +6,11 @@ import {
   initializeAuth
 } from "firebase/auth";
 import { Email } from "types";
-import { atom } from "jotai";
+import { atom, useAtom } from "jotai";
 import { firebaseApp } from "./init";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getReactNativePersistence } from "firebase/auth/react-native";
+import { authAtom } from "@/store/atoms/auth";
 
 // Initialize Firebase Authentication and get a reference to the service
 //export const auth = getAuth(firebaseApp);
@@ -40,7 +41,7 @@ export const createUserWithEmailAndPasswordAtom = async (
 
 // sign in existing users with email and password
 
-export const signInWithEmailAndPasswordAtom = async (
+export const signInWithEmailAndPassword = async (
   email: Email,
   password: string
 ) => {
@@ -48,7 +49,9 @@ export const signInWithEmailAndPasswordAtom = async (
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
-      return atom(user);
+      const [, setUser] = useAtom(authAtom);
+      setUser(user);
+      return authAtom;
       // ...
     })
     .catch(error => {

@@ -7,7 +7,7 @@ interface Props {
   exImage: any;
   exName: string;
   exDescription: string;
-  exReps: string;
+  exReps?: string;
 }
 const ExerciseCard: React.FC<Props> = ({
   exImage,
