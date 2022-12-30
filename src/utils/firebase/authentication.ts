@@ -15,7 +15,7 @@ import { authAtom } from "@/store/atoms/auth";
 // Initialize Firebase Authentication and get a reference to the service
 //export const auth = getAuth(firebaseApp);
 const auth = initializeAuth(firebaseApp, {
-  persistence: getReactNativePersistence(AsyncStorage)
+  //persistence: getReactNativePersistence(AsyncStorage)
 });
 
 // email authentication creates a user and returns a userCredential
@@ -48,10 +48,11 @@ export const signInWithEmailAndPassword = async (
   return firebaseSignInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       // Signed in
-      const user = userCredential.user;
-      const [, setUser] = useAtom(authAtom);
-      setUser(user);
-      return authAtom;
+      //const user = userCredential.user;
+      //const [, setUser] = useAtom(authAtom);
+      //setUser(user);
+      console.log("userCredential", userCredential);
+      return;
       // ...
     })
     .catch(error => {

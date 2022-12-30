@@ -43,7 +43,6 @@ const Login: React.FC<Props> = ({ navigation }) => {
       alert("Sign In", "Invalid password");
       return;
     }
-
     signInWithEmailAndPassword(email, password)
       .then(() => {
         alert("Sign In", "Signed In Successfully");
