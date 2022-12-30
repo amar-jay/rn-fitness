@@ -10,12 +10,11 @@ import { atom, useAtom } from "jotai";
 import { firebaseApp } from "./init";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getReactNativePersistence } from "firebase/auth/react-native";
-import { authAtom } from "@/store/atoms/auth";
 
 // Initialize Firebase Authentication and get a reference to the service
 //export const auth = getAuth(firebaseApp);
 const auth = initializeAuth(firebaseApp, {
-  //persistence: getReactNativePersistence(AsyncStorage)
+  persistence: getReactNativePersistence(AsyncStorage)
 });
 
 // email authentication creates a user and returns a userCredential
