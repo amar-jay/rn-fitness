@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import {
   authStateObserverAtom,
   createUserWithEmailAndPasswordAtom,
-  signInWithEmailAndPasswordAtom
+  signInWithEmailAndPassword
 } from "./authentication";
 // Initialize Firestore
 
@@ -22,5 +22,5 @@ export {
   storage,
   authStateObserverAtom,
   createUserWithEmailAndPasswordAtom,
-  signInWithEmailAndPasswordAtom
+  signInWithEmailAndPassword
 };

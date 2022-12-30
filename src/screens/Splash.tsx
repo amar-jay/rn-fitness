@@ -6,6 +6,7 @@ import { wp, hp } from "@/utils/screen-dimension";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackParamList } from "types";
 import { Logo } from "@/components/Logo";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Splash = ({
   navigation
@@ -23,7 +24,7 @@ const Splash = ({
       } else {
         navigation.navigate(screenNames.HOME);
       } */
-      navigation.navigate(screenNames.Home);
+      navigation.navigate(screenNames.Login);
     } catch (e) {
       console.error("navigation error", e);
     }
