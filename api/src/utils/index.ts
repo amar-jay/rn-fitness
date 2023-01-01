@@ -20,7 +20,8 @@ const isProfile = (u: unknown): u is Profile => {
   if (typeof body !== "object") return false;
 
   if (typeof body.userId !== "number") return false;
-  if (typeof body.bio !== "string") return false;
+
+  if (typeof body.name !== "string") return false;
   if (typeof body.email !== "string") return false;
   if (typeof body.id !== "number") return false;
 
