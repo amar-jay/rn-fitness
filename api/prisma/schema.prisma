@@ -11,18 +11,62 @@ datasource db {
 }
 
 model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
-  user   User    @relation(fields: [userId], references: [id])
-  userId Int     @unique
+  id      Int    @id @default(autoincrement())
+  email   String @unique
+  name    String @unique
+  friends User[]
+  userId  String @unique
+
+  @@unique([id, name])
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
-  weight  Int?
-  height  Int?
-  bmi     Int?
-  profile Profile?
+  id        Int       @id @default(autoincrement())
+  age       Int?
+  bio       String?
+  name      String?   @unique
+  weight    Int?
+  height    Int?
+  bmi       Int?
+  profileId Int?
+  Profile   Profile?  @relation(fields: [profileId, name], references: [id, name])
+  mainGoal  Goal?     @relation(fields: [goalId], references: [id])
+  goalId    Int?
+  Routine   Routine[]
+}
+
+model Routine {
+  id                  Int        @id @default(autoincrement())
+  routine_name        String
+  routine_description String
+  routine_time        String
+  routine_level       String
+  routine_image       String // image url or image file
+  routine_difficulty  String
+  routine_exercises   Exercise[]
+  User                User?      @relation(fields: [userId], references: [id])
+  userId              Int?
+}
+
+model Exercise {
+  id              Int      @id @default(autoincrement())
+  exercise_name   String
+  exercise_image  String // image url or image file
+  exercise_video  String? // video url or video file
+  exercise_sets   Int
+  exercise_reps   Int
+  exercise_weight Int
+  exercise_rest   Int
+  routineId       Int
+  Routine         Routine? @relation(fields: [routineId], references: [id])
+}
+
+model Goal {
+  id          Int      @id @default(autoincrement())
+  goal_weight Int
+  start_date  DateTime
+  end_date    DateTime
+  goal_type   String
+  userId      Int?
+  User        User[]
 }
