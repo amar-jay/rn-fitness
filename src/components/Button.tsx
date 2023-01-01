@@ -16,7 +16,7 @@ interface Props {
   buttonHeight?: number;
   icon?: React.ComponentProps<typeof Icon>["name"];
   inverse?: boolean;
-  //bgColor?: string;
+  bgColor?: string;
 }
 
 const Button: React.FC<Props> = ({
@@ -25,10 +25,10 @@ const Button: React.FC<Props> = ({
   buttonWidth,
   buttonHeight,
   icon,
-  //bgColor
-  inverse = false,
-  ...props
+  bgColor,
+  inverse = false
 }) => {
+  const color = bgColor || !inverse ? colors.app_Tint : colors.homeBG;
   return (
     <TouchableHighlight
       style={[
@@ -37,7 +37,7 @@ const Button: React.FC<Props> = ({
           width: wp(buttonWidth),
           height:
             hp(buttonHeight!) || Platform.OS === "android" ? hp(7) : hp(5),
-          backgroundColor: !inverse ? colors.app_Tint : colors.homeBG,
+          backgroundColor: color,
           borderColor: colors.app_Tint,
           marginTop: 12
         }

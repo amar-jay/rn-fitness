@@ -78,7 +78,7 @@ const TabNav = () => {
       })}
     >
       <Tab.Screen
-        name={screenNames.Homestack}
+        name={screenNames.Home}
         component={Home as any}
         options={{
           tabBarLabel: "",

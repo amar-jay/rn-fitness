@@ -5,9 +5,10 @@ import screenNames, { ScreenNames } from "../constants/navigation";
 import { wp, hp } from "@/utils/screen-dimension";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackParamList } from "types";
+import WebBrowser from "expo-web-browser";
 import { Logo } from "@/components/Logo";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
+//WebBrowser.maybeCompleteAuthSession();
 const Splash = ({
   navigation
 }: NativeStackScreenProps<StackParamList, ScreenNames["Splash_screen"]>) => {
@@ -32,10 +33,6 @@ const Splash = ({
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor={colors.app_Tint} barStyle="light-content" />
-      {/* <Image
-        source={require("@expo/snack-static/react-native-logo.png")}
-        style={styles.image}
-      /> */}
       <Logo />
     </SafeAreaView>
   );

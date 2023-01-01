@@ -6,7 +6,7 @@ import {
   initializeAuth
 } from "firebase/auth";
 import { Email } from "types";
-import { atom, useAtom } from "jotai";
+import { atom } from "jotai";
 import { firebaseApp } from "./init";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getReactNativePersistence } from "firebase/auth/react-native";

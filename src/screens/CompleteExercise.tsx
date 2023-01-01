@@ -3,9 +3,9 @@ import { SafeAreaView, View, Text, StyleSheet } from "react-native";
 import { Ionicons as Icon } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackParamList } from "types";
-import screenNames, { ScreenNames } from "../constants/navigation";
-import colors from "../constants/colors";
-import NativeButton from "../components/Button";
+import screenNames, { ScreenNames } from "@/constants/navigation";
+import colors from "@/constants/colors";
+import Button from "@/components/Button";
 
 type Props = NativeStackScreenProps<
   StackParamList,
@@ -30,10 +30,10 @@ const CompleteExercise: React.FC<Props> = ({ navigation, route }) => {
           />
         </View>
         <View style={styles.buttonContainer}>
-          <NativeButton
+          <Button
             textName="Go to Home"
             onClick={backHome}
-            buttonWidth={"60%"}
+            buttonWidth={60}
             bgColor={colors.app_color_secondary}
           />
         </View>

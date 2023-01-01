@@ -48,6 +48,11 @@ const Signup: React.FC<Props> = ({ navigation }) => {
 
     alert("Sign Up", "Signed Up Successfully");
   };
+
+  function handleFacebookAuth(): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <SafeAreaView style={[styles.container]}>
       <Header name={"Signup"} mainCardHeader={""} />
@@ -70,13 +75,12 @@ const Signup: React.FC<Props> = ({ navigation }) => {
           style={styles.input}
           onChangeText={e => setPassword(e)}
         />
+
         <Button textName={"Sign Up"} buttonWidth={64} onClick={handleSignUp} />
         <Button
-          textName={"Facebook"}
-          icon={"facebook"}
+          textName={"Github"}
           buttonWidth={64}
-          inverse
-          onClick={handleSignUp}
+          onClick={handleFacebookAuth}
         />
       </View>
     </SafeAreaView>

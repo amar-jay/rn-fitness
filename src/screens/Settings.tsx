@@ -73,7 +73,7 @@ const Settings: React.FC<{}> = () => {
           alert("Notification", "Unimplemented feature 🚧");
           break;
         case "About":
-          await handleUrl("https://expo.dev").catch(e => {
+          await handleUrl("www.expo.dev").catch(e => {
             alert("Notification", JSON.stringify(e));
           });
           break;

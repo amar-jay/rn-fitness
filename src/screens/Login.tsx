@@ -12,11 +12,12 @@ import {
   validateEmail,
   validatePassword
 } from "@/utils/client-side-validation";
-import * as WebBrowser from "expo-web-browser";
-import { signInWithEmailAndPassword } from "@/utils/firebase";
-import { GithubAuth } from "@/utils/auth/github";
+import handleUrl from "@/utils/handle-url";
+//import * as WebBrowser from "expo-web-browser";
+//import { signInWithEmailAndPassword } from "@/utils/firebase";
+//import { GithubAuth } from "@/utils/auth/github";
 
-WebBrowser.maybeCompleteAuthSession();
+//WebBrowser.maybeCompleteAuthSession();
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Login"]>;
 const Login: React.FC<Props> = ({ navigation }) => {
   //  const [request, response, handleGithubAuthSignIn] = GithubAuth();
@@ -56,6 +57,10 @@ const Login: React.FC<Props> = ({ navigation }) => {
   };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  function handleFacebookAuthSignIn() {
+    return handleUrl("https://www.facebook.com/");
+  }
+
   return (
     <SafeAreaView style={[styles.container]}>
       <Header name={"Login"} mainCardHeader={""} />
@@ -92,7 +97,7 @@ const Login: React.FC<Props> = ({ navigation }) => {
           icon={"facebook"}
           buttonWidth={64}
           inverse
-          onClick={handleGithubAuthSignIn}
+          onClick={handleFacebookAuthSignIn}
         />
       </View>
 
