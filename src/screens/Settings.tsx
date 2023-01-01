@@ -53,8 +53,14 @@ const Settings: React.FC<{}> = () => {
 
   useEffect(() => {}, [pauseTimeOptions, soundInfo]);
   */
-  const renderItem = ({ item, index }: any) => {
-    const handlePress = () => {
+  const renderItem = ({
+    item,
+    index
+  }: {
+    item: SettingsData;
+    index: number;
+  }) => {
+    const handlePress = async () => {
       switch (item.name) {
         case "Language":
           alert("Notification", "Only English is supported");
@@ -67,7 +73,13 @@ const Settings: React.FC<{}> = () => {
           alert("Notification", "Unimplemented feature 🚧");
           break;
         case "About":
-          handleUrl("https://www.themanan.me");
+          await handleUrl("https://expo.dev").catch(e => {
+            alert("Notification", JSON.stringify(e));
+          });
+          break;
+        default:
+          alert("Notification", "Unknown event");
+          break;
       }
     };
     return (

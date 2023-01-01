@@ -67,6 +67,7 @@ const TabNav = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+        headerShown: false,
         //tabBarVisible: route.name === screenNames.Home ? true : false,
         tabBarStyle: {
           height: Platform.OS === "android" ? hp(8.2) : hp(8.2),
@@ -77,7 +78,7 @@ const TabNav = () => {
       })}
     >
       <Tab.Screen
-        name={screenNames.Home}
+        name={screenNames.Homestack}
         component={Home as any}
         options={{
           tabBarLabel: "",

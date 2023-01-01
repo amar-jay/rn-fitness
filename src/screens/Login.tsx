@@ -12,10 +12,16 @@ import {
   validateEmail,
   validatePassword
 } from "@/utils/client-side-validation";
+import * as WebBrowser from "expo-web-browser";
 import { signInWithEmailAndPassword } from "@/utils/firebase";
+import { GithubAuth } from "@/utils/auth/github";
 
+WebBrowser.maybeCompleteAuthSession();
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Login"]>;
 const Login: React.FC<Props> = ({ navigation }) => {
+  //  const [request, response, handleGithubAuthSignIn] = GithubAuth();
+  const handleGithubAuthSignIn = async () => {};
+
   const handleSignIn = () => {
     if (!email) {
       alert("Sign In", "Please enter email");
@@ -43,16 +49,8 @@ const Login: React.FC<Props> = ({ navigation }) => {
       alert("Sign In", "Invalid password");
       return;
     }
-    signInWithEmailAndPassword(email, password)
-      .then(() => {
-        alert("Sign In", "Signed In Successfully");
-      })
-      .catch(error => {
-        alert("Sign In", error.message);
-        setEmail("");
-        setPassword("");
-      });
   };
+
   const handleSignUp = () => {
     navigation.navigate(screenNames.Signup);
   };
@@ -82,6 +80,20 @@ const Login: React.FC<Props> = ({ navigation }) => {
           onChangeText={e => setPassword(e)}
         />
         <Button textName={"Sign In"} buttonWidth={64} onClick={handleSignIn} />
+        <Button
+          textName={"Github"}
+          icon={"analytics"}
+          buttonWidth={64}
+          inverse
+          onClick={handleGithubAuthSignIn}
+        />
+        <Button
+          textName={"Facebook"}
+          icon={"facebook"}
+          buttonWidth={64}
+          inverse
+          onClick={handleGithubAuthSignIn}
+        />
       </View>
 
       <Button

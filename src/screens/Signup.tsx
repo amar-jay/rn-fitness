@@ -71,6 +71,13 @@ const Signup: React.FC<Props> = ({ navigation }) => {
           onChangeText={e => setPassword(e)}
         />
         <Button textName={"Sign Up"} buttonWidth={64} onClick={handleSignUp} />
+        <Button
+          textName={"Facebook"}
+          icon={"facebook"}
+          buttonWidth={64}
+          inverse
+          onClick={handleSignUp}
+        />
       </View>
     </SafeAreaView>
   );

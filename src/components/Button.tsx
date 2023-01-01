@@ -1,6 +1,12 @@
 import React from "react";
-import { Platform, Text, StyleSheet } from "react-native";
-import { TouchableHighlight } from "react-native-gesture-handler";
+import { MaterialIcons as Icon } from "@expo/vector-icons";
+import {
+  View,
+  TouchableHighlight,
+  Platform,
+  Text,
+  StyleSheet
+} from "react-native";
 import colors from "../constants/colors";
 import { wp, hp } from "@/utils/screen-dimension";
 interface Props {
@@ -8,6 +14,7 @@ interface Props {
   onClick: () => void;
   buttonWidth: number;
   buttonHeight?: number;
+  icon?: React.ComponentProps<typeof Icon>["name"];
   inverse?: boolean;
   //bgColor?: string;
 }
@@ -17,8 +24,10 @@ const Button: React.FC<Props> = ({
   onClick,
   buttonWidth,
   buttonHeight,
+  icon,
   //bgColor
-  inverse = false
+  inverse = false,
+  ...props
 }) => {
   return (
     <TouchableHighlight
@@ -29,20 +38,32 @@ const Button: React.FC<Props> = ({
           height:
             hp(buttonHeight!) || Platform.OS === "android" ? hp(7) : hp(5),
           backgroundColor: !inverse ? colors.app_Tint : colors.homeBG,
-          borderColor: colors.app_Tint
+          borderColor: colors.app_Tint,
+          marginTop: 12
         }
       ]}
       onPress={onClick}
       underlayColor={colors.app_color_primary}
     >
-      <Text
-        style={[
-          styles.text,
-          { color: !inverse ? colors.homeBG : colors.app_Tint }
-        ]}
-      >
-        {textName}
-      </Text>
+      <View style={styles.buttonContainer}>
+        {icon && (
+          <Icon
+            name={icon}
+            size={24}
+            style={{ marginRight: 8 }}
+            color={!inverse ? colors.homeBG : colors.app_Tint}
+          />
+        )}
+
+        <Text
+          style={[
+            styles.text,
+            { color: !inverse ? colors.homeBG : colors.app_Tint }
+          ]}
+        >
+          {textName}
+        </Text>
+      </View>
     </TouchableHighlight>
   );
 };
@@ -61,5 +82,11 @@ const styles = StyleSheet.create({
     borderColor: colors.app_Tint,
     backgroundColor: colors.app_Tint,
     justifyContent: "center"
+  },
+  buttonContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between"
   }
 });
