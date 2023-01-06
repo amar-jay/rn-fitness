@@ -2,13 +2,17 @@
   "expo": {
     "plugins": [
       "@react-native-firebase/app",
+      "@react-native-firebase/auth",
       "@react-native-firebase/perf",
-      "react-native-fbsdk-next", 
-      [ "expo-build-properties", {
-      "ios": {
-        "useFrameworks": "static"
-      }
-      }],
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "1929390870741214",
+          "displayName": "Fitness Tracker",
+          "isAutoInitEnabled": true,
+          "iosUserTrackingPermission": "This identifier will be used to deliver personalized ads to you."
+        }
+      ]
     ],
     "name": "fitness",
     "slug": "fitness",
@@ -30,17 +34,38 @@
     ],
     "ios": {
       "googleServicesFile": "./GoogleService-Info.plist",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "This identifier will be used to deliver personalized ads to you.",
+        "SKAdNetworkItems": [
+          {
+            "SKAdNetworkIdentifier": "v9wttpbfk9.skadnetwork"
+          },
+          {
+            "SKAdNetworkIdentifier": "n38lu8286q.skadnetwork"
+          }
+        ]
+      },
+      "bundleIdentifier": "com.garaj.firebasetracker"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/splash.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions": [
+        "android.permission.INTERNET"
+      ],
+      "package": "com.garaj.firebasetracker"
     },
     "web": {
       "favicon": "./src/assets/splash.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "afae0a61-2a93-4fa3-adb7-f81354724007"
+      }
     }
   }
 }
