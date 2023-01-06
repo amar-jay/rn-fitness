@@ -1,5 +1,9 @@
 {
   "expo": {
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/perf"
+    ],
     "name": "fitness",
     "slug": "fitness",
     "version": "1.0.0",
@@ -19,9 +23,11 @@
       "**/*"
     ],
     "ios": {
+      "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/splash.png",
         "backgroundColor": "#FFFFFF"

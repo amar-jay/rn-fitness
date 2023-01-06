@@ -11,6 +11,7 @@ import colors from "../constants/colors";
 import { wp, hp } from "@/utils/screen-dimension";
 interface Props {
   textName: string;
+  disabled?: boolean;
   onClick: () => void;
   buttonWidth: number;
   buttonHeight?: number;
@@ -24,6 +25,7 @@ const Button: React.FC<Props> = ({
   onClick,
   buttonWidth,
   buttonHeight,
+  disabled,
   icon,
   bgColor,
   inverse = false
@@ -31,6 +33,7 @@ const Button: React.FC<Props> = ({
   const color = bgColor || !inverse ? colors.app_Tint : colors.homeBG;
   return (
     <TouchableHighlight
+      disabled={disabled}
       style={[
         styles.cardContainer,
         {

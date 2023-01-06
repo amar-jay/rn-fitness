@@ -13,6 +13,7 @@ import {
   validateEmail,
   validatePassword
 } from "@/utils/client-side-validation";
+import handleUrl from "@/utils/handle-url";
 
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Signup"]>;
 const Signup: React.FC<Props> = ({ navigation }) => {
@@ -49,8 +50,18 @@ const Signup: React.FC<Props> = ({ navigation }) => {
     alert("Sign Up", "Signed Up Successfully");
   };
 
-  function handleFacebookAuth(): void {
-    throw new Error("Function not implemented.");
+  async function handleFacebookAuth() {
+    await handleUrl("https://www.facebook.com/").catch(err => {
+      alert("Sign Up", "Something went wrong");
+    });
+    return;
+  }
+
+  async function handleGoogleAuth() {
+    await handleUrl("https://www.facebook.com/").catch(err => {
+      alert("Sign Up", "Something went wrong");
+    });
+    return;
   }
 
   return (
@@ -77,10 +88,21 @@ const Signup: React.FC<Props> = ({ navigation }) => {
         />
 
         <Button textName={"Sign Up"} buttonWidth={64} onClick={handleSignUp} />
+      </View>
+      <View>
         <Button
-          textName={"Github"}
+          icon="facebook"
+          inverse
+          textName={"Facebook"}
           buttonWidth={64}
           onClick={handleFacebookAuth}
+        />
+
+        <Button
+          inverse
+          textName={"Google"}
+          buttonWidth={64}
+          onClick={handleGoogleAuth}
         />
       </View>
     </SafeAreaView>
@@ -89,7 +111,7 @@ const Signup: React.FC<Props> = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: hp(30),
+    paddingBottom: hp(20),
     paddingTop: hp(10),
     flex: 1,
     alignItems: "center",

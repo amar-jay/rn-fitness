@@ -6,39 +6,49 @@ import {
   ImageSourcePropType,
   StyleProp,
   ViewStyle
-} from "react-native"
-import colors from "@/constants/colors"
+} from "react-native";
+import { MaterialIcons as Icon } from "@expo/vector-icons";
+import colors from "@/constants/colors";
+import React from "react";
 
 interface Props {
-  image: ImageSourcePropType
-  name: string
-  description?: string
-  smallVariant?: boolean
-  style: StyleProp<ViewStyle>
+  icon?: React.ComponentProps<typeof Icon>["name"];
+  image?: ImageSourcePropType;
+  name: string;
+  description?: string;
+  smallVariant?: boolean;
+  style: StyleProp<ViewStyle>;
 }
 const InfoCard: React.FC<Props> = ({
-  smallVariant,
+  description,
+  icon,
   image,
   name,
   style,
-  description
+  smallVariant
 }) => {
   return (
     <View style={[style, styles.container]}>
-      <Image
-        source={image}
-        style={
-          smallVariant ? styles.smallImageContainer : styles.imageContainer
-        }
-      />
+      {icon ? (
+        <View style={[styles.iconContainer]}>
+          <Icon name={icon} size={30} color={colors.app_Tint} />
+        </View>
+      ) : (
+        <Image
+          source={image}
+          style={
+            smallVariant ? styles.smallImageContainer : styles.imageContainer
+          }
+        />
+      )}
       <View>
         <Text style={styles.header}>{name}</Text>
         <Text style={styles.subHeader}>{description}</Text>
       </View>
     </View>
-  )
-}
-export default InfoCard
+  );
+};
+export default InfoCard;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
@@ -50,7 +60,15 @@ const styles = StyleSheet.create({
     height: 80,
     borderRadius: 50
   },
-
+  iconContainer: {
+    //backgroundColor: colors.app_Tint + "20",
+    margin: 5,
+    width: 40,
+    height: 40,
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center"
+  },
   smallImageContainer: {
     width: 50,
     height: 50,
@@ -68,4 +86,4 @@ const styles = StyleSheet.create({
     color: colors.description,
     fontFamily: "sans-serif-condensed"
   }
-})
+});

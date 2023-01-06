@@ -7,4 +7,5 @@ const firebaseConfig = {
   appId: "1:77242900473:web:c75ef80580bc16a6f12728",
   measurementId: "G-TWMMKT7ME0"
 };
+
 export default firebaseConfig;

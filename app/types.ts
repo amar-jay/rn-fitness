@@ -1,10 +1,12 @@
 import { ParamListBase } from "@react-navigation/native";
+import { MaterialIcons as Icon } from "@expo/vector-icons";
 import routines from "@/assets/data/routine";
+import React from "react";
 
 export type Dict<T> = { [K: string]: T };
 
 export interface SettingsData {
-  icon: any;
+  icon?: React.ComponentProps<typeof Icon>["name"];
   description?: string;
   name: string;
 }

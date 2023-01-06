@@ -12,19 +12,19 @@ import type { SettingsData } from "types";
 
 const settingsData: SettingsData[] = [
   {
-    icon: require("../assets/icon.png"),
+    icon: "language",
     name: "Language"
   },
   {
-    icon: require("../assets/icon.png"),
+    icon: "edit",
     name: "Edit"
   },
   {
-    icon: require("../assets/icon.png"),
+    icon: "wb-sunny",
     name: "Dark Mode"
   },
   {
-    icon: require("../assets/icon.png"),
+    icon: "info",
     name: "About"
   }
 ];
@@ -73,8 +73,8 @@ const Settings: React.FC<{}> = () => {
           alert("Notification", "Unimplemented feature 🚧");
           break;
         case "About":
-          await handleUrl("www.expo.dev").catch(e => {
-            alert("Notification", JSON.stringify(e));
+          await handleUrl("https://themanan.me").catch(e => {
+            alert("Error", JSON.stringify(e));
           });
           break;
         default:
@@ -86,7 +86,7 @@ const Settings: React.FC<{}> = () => {
       <Touchable onPress={handlePress}>
         <InfoCard
           key={index}
-          image={item?.icon}
+          icon={item?.icon}
           description={item?.description}
           style={[
             styles.subContainer,

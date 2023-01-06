@@ -1,5 +1,5 @@
 // Login screen
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, SafeAreaView, StyleSheet, TextInput } from "react-native";
 import Button from "@/components/Button";
 import screenNames, { ScreenNames } from "@/constants/navigation";
@@ -15,14 +15,24 @@ import {
 import handleUrl from "@/utils/handle-url";
 //import * as WebBrowser from "expo-web-browser";
 //import { signInWithEmailAndPassword } from "@/utils/firebase";
-//import { GithubAuth } from "@/utils/auth/github";
+import { GithubAuth, TOKEN } from "@/utils/auth/github";
+import { maybeCompleteAuthSession } from "expo-web-browser";
 
-//WebBrowser.maybeCompleteAuthSession();
+//maybeCompleteAuthSession();
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Login"]>;
 const Login: React.FC<Props> = ({ navigation }) => {
-  //  const [request, response, handleGithubAuthSignIn] = GithubAuth();
-  const handleGithubAuthSignIn = async () => {};
+  const [_req, response, githubAuthPrompt] = GithubAuth();
+  const handleGithubAuthSignIn = () => {
+    githubAuthPrompt();
+    // alert("Sign In", TOKEN);
+    return;
+  };
 
+  useEffect(() => {
+    if (response?.type === "success") {
+      alert("Sign In", "5ede6ef9c872.." + response.params.code);
+    }
+  }, [response]);
   const handleSignIn = () => {
     if (!email) {
       alert("Sign In", "Please enter email");
@@ -84,10 +94,14 @@ const Login: React.FC<Props> = ({ navigation }) => {
           style={styles.input}
           onChangeText={e => setPassword(e)}
         />
-        <Button textName={"Sign In"} buttonWidth={64} onClick={handleSignIn} />
+        <Button
+          textName={"Sign In"}
+          disabled
+          buttonWidth={64}
+          onClick={handleSignIn}
+        />
         <Button
           textName={"Github"}
-          icon={"analytics"}
           buttonWidth={64}
           inverse
           onClick={handleGithubAuthSignIn}
