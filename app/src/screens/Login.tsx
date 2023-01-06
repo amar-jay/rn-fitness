@@ -4,7 +4,7 @@ import { View, SafeAreaView, StyleSheet, TextInput } from "react-native";
 import Button from "@/components/Button";
 import screenNames, { ScreenNames } from "@/constants/navigation";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Email, StackParamList } from "types";
+import { StackParamList } from "types";
 import alert from "@/utils/alert-message";
 import Header from "@/components/Header";
 import { hp } from "@/utils/screen-dimension";
@@ -13,9 +13,6 @@ import {
   validatePassword
 } from "@/utils/client-side-validation";
 import handleUrl from "@/utils/handle-url";
-//import * as WebBrowser from "expo-web-browser";
-//import { signInWithEmailAndPassword } from "@/utils/firebase";
-import { createUserWithEmailAndPasswordAtom } from "@/utils/firebase";
 
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Login"]>;
 const Login: React.FC<Props> = ({ navigation }) => {
@@ -64,15 +61,10 @@ const Login: React.FC<Props> = ({ navigation }) => {
       return true;
     };
     if (valid()) {
-      const x = await createUserWithEmailAndPasswordAtom(
-        email as Email,
-        password
-      );
-      alert("Notif", JSON.stringify(x));
+      // const x = await createUserWithEmailAndPasswordAtom( email as Email,password);
+      alert("Valid", "valid email and password");
+      navigation.navigate(screenNames.Home as any);
     }
-    // c-> is email
-    // c-> is password
-    //navigation.navigate(screenNames.Home as any);
   };
 
   return (

@@ -6,26 +6,31 @@ import { wp, hp } from "@/utils/screen-dimension";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackParamList } from "types";
 import { Logo } from "@/components/Logo";
+import { useAtom } from "jotai";
+import { isAuthAtom } from "@/store/atoms/auth";
+import alert from "@/utils/alert-message";
 
 const Splash = ({
   navigation
 }: NativeStackScreenProps<StackParamList, ScreenNames["Splash_screen"]>) => {
+  const [isAuth] = useAtom(isAuthAtom);
   useEffect(() => {
     setTimeout(() => checkFirstLogin(), 1000);
   }, []);
 
   const checkFirstLogin = async () => {
     try {
-      /* const firstLaunch = await AsyncStorage.getItem('firstLaunch');
-      if (!firstLaunch) {
-        await AsyncStorage.setItem('firstLaunch', 'false');
-        navigation.navigate(screenNames.USER_CONTAINER);
+      // const firstLaunch = await AsyncStorage.getItem('firstLaunch');
+      const firstLaunch = true;
+      if (!firstLaunch && isAuth) {
+        //await AsyncStorage.setItem('firstLaunch', 'false');
+        //navigation.navigate(screenNames.HOME);
       } else {
-        navigation.navigate(screenNames.HOME);
-      } */
-      navigation.navigate(screenNames.Login);
+        navigation.navigate(screenNames.Login);
+      }
     } catch (e) {
       console.error("navigation error", e);
+      alert("navigation error", e);
     }
   };
   return (

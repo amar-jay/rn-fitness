@@ -1,3 +1,4 @@
+/*
 import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
 import { useEffect } from "react";
 import alert from "../alert-message";
@@ -35,3 +36,4 @@ export const GithubAuth = () => {
     promptAsync
   };
 };
+*/

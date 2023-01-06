@@ -1,7 +1,6 @@
 //import { FacebookAuth } from "./facebook";
-import { GithubAuth } from "./github";
+//import { GithubAuth } from "./github";
 
-export {
-  //FacebookAuth,
-  GithubAuth
-};
+export //FacebookAuth,
+// GithubAuth
+ {};

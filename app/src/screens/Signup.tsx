@@ -58,7 +58,7 @@ const Signup: React.FC<Props> = ({ navigation }) => {
   }
 
   async function handleGoogleAuth() {
-    await handleUrl("https://www.facebook.com/").catch(err => {
+    await handleUrl("https://www.google.com/").catch(err => {
       alert("Sign Up", "Something went wrong");
     });
     return;
