@@ -3,13 +3,20 @@ import {
   signInWithEmailAndPassword as firebaseSignInWithEmailAndPassword,
   User,
   GoogleAuthProvider as FirebaseGoogleAuth,
-  initializeAuth
-} from "firebase/auth";
+  initializeAuth,
+  signInWithCredential,
+  getAuth,
+  getReactNativePersistence,
+  FacebookAuthProvider
+} from "firebase/auth/react-native";
+import * as Facebook from "expo-auth-session/providers/facebook";
+import { ResponseType } from "expo-auth-session";
 import { Email } from "types";
 import { atom } from "jotai";
 import { firebaseApp } from "./init";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getReactNativePersistence } from "firebase/auth/react-native";
+import { FACEBOOK_CLIENT_ID } from "../auth/facebook";
+import { useEffect } from "react";
 
 // Initialize Firebase Authentication and get a reference to the service
 //export const auth = getAuth(firebaseApp);
@@ -84,4 +91,27 @@ export const GoogleAuthProvider = () => {
   const provider = new FirebaseGoogleAuth();
   auth.useDeviceLanguage();
   return provider;
+};
+
+export const FacebookAuthHook = () => {
+  const [request, response, promptAsync] = Facebook.useAuthRequest({
+    responseType: ResponseType.Token,
+    clientId: FACEBOOK_CLIENT_ID
+  });
+
+  useEffect(() => {
+    if (response?.type === "success") {
+      const { access_token } = response.params;
+      const auth = getAuth();
+      const provider = new FacebookAuthProvider();
+      const credential = (provider as any).credential(access_token);
+      // Sign in with the credential from the Facebook user.
+      signInWithCredential(auth, credential);
+    }
+  }, [response]);
+
+  return {
+    request,
+    promptAsync
+  };
 };

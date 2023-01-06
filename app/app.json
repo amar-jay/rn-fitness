@@ -2,7 +2,8 @@
   "expo": {
     "plugins": [
       "@react-native-firebase/app",
-      "@react-native-firebase/perf"
+      "@react-native-firebase/perf",
+      "react-native-fbsdk-next"
     ],
     "name": "fitness",
     "slug": "fitness",

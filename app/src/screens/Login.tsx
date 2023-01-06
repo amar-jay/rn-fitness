@@ -15,24 +15,28 @@ import {
 import handleUrl from "@/utils/handle-url";
 //import * as WebBrowser from "expo-web-browser";
 //import { signInWithEmailAndPassword } from "@/utils/firebase";
-import { GithubAuth, TOKEN } from "@/utils/auth/github";
+import { GithubAuth, FacebookAuth } from "@/utils/auth";
 import { maybeCompleteAuthSession } from "expo-web-browser";
 
-//maybeCompleteAuthSession();
+maybeCompleteAuthSession();
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Login"]>;
 const Login: React.FC<Props> = ({ navigation }) => {
-  const [_req, response, githubAuthPrompt] = GithubAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const gh_auth = GithubAuth();
+  const fb_auth = FacebookAuth();
   const handleGithubAuthSignIn = () => {
-    githubAuthPrompt();
+    return gh_auth.promptAsync();
     // alert("Sign In", TOKEN);
-    return;
+  };
+  const handleFacebookAuthSignIn = () => {
+    return handleUrl("https://www.facebook.com/");
+    return fb_auth.promptAsync();
+  };
+  const handleSignUp = () => {
+    navigation.navigate(screenNames.Signup);
   };
 
-  useEffect(() => {
-    if (response?.type === "success") {
-      alert("Sign In", "5ede6ef9c872.." + response.params.code);
-    }
-  }, [response]);
   const handleSignIn = () => {
     if (!email) {
       alert("Sign In", "Please enter email");
@@ -60,16 +64,10 @@ const Login: React.FC<Props> = ({ navigation }) => {
       alert("Sign In", "Invalid password");
       return;
     }
+    // c-> is email
+    // c-> is password
+    navigation.navigate(screenNames.Home as any);
   };
-
-  const handleSignUp = () => {
-    navigation.navigate(screenNames.Signup);
-  };
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  function handleFacebookAuthSignIn() {
-    return handleUrl("https://www.facebook.com/");
-  }
 
   return (
     <SafeAreaView style={[styles.container]}>
