@@ -1,18 +1,18 @@
 // Login screen
 
+import { StackParamList } from "types";
 import { useState } from "react";
 import { View, SafeAreaView, StyleSheet, TextInput } from "react-native";
 import Button from "@/components/Button";
 import { ScreenNames } from "@/constants/navigation";
-import alert from "@/utils/alert-message";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackParamList } from "types";
 import Header from "@/components/Header";
-import { hp } from "@/utils/screen-dimension";
 import {
   validateEmail,
   validatePassword
 } from "@/utils/client-side-validation";
+import alert from "@/utils/alert-message";
+import { hp } from "@/utils/screen-dimension";
 import handleUrl from "@/utils/handle-url";
 
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Signup"]>;

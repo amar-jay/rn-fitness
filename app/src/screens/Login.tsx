@@ -1,10 +1,10 @@
 // Login screen
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { View, SafeAreaView, StyleSheet, TextInput } from "react-native";
 import Button from "@/components/Button";
 import screenNames, { ScreenNames } from "@/constants/navigation";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackParamList } from "types";
+import { Email, StackParamList } from "types";
 import alert from "@/utils/alert-message";
 import Header from "@/components/Header";
 import { hp } from "@/utils/screen-dimension";
@@ -15,7 +15,6 @@ import {
 import handleUrl from "@/utils/handle-url";
 //import * as WebBrowser from "expo-web-browser";
 //import { signInWithEmailAndPassword } from "@/utils/firebase";
-import { maybeCompleteAuthSession } from "expo-web-browser";
 import { createUserWithEmailAndPasswordAtom } from "@/utils/firebase";
 
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Login"]>;
@@ -34,35 +33,43 @@ const Login: React.FC<Props> = ({ navigation }) => {
     navigation.navigate(screenNames.Signup);
   };
 
-  const handleSignIn = () => {
-    if (!email) {
-      alert("Sign In", "Please enter email");
-      return;
-    }
-    if (!password) {
-      alert("Sign In", "Please enter password");
-      return;
-    }
+  const handleSignIn = async () => {
+    const valid = () => {
+      if (!email) {
+        alert("Sign In", "Please enter email");
+        return false;
+      }
+      if (!password) {
+        alert("Sign In", "Please enter password");
+        return false;
+      }
 
-    if (password.length < 6) {
-      setPassword("");
-      alert("Sign In", "Password should be at least 6 characters");
-      return;
-    }
+      if (password.length < 6) {
+        setPassword("");
+        alert("Sign In", "Password should be at least 6 characters");
+        return false;
+      }
 
-    if (!validateEmail(email)) {
-      setEmail("");
-      alert("Sign Up", "Invalid email");
-      return;
-    }
+      if (!validateEmail(email)) {
+        setEmail("");
+        alert("Sign Up", "Invalid email");
+        return false;
+      }
 
-    if (!validatePassword(password)) {
-      setPassword("");
-      alert("Sign In", "Invalid password");
-      return;
+      if (!validatePassword(password)) {
+        setPassword("");
+        alert("Sign In", "Invalid password");
+        return false;
+      }
+      return true;
+    };
+    if (valid()) {
+      const x = await createUserWithEmailAndPasswordAtom(
+        email as Email,
+        password
+      );
+      alert("Notif", JSON.stringify(x));
     }
-    const x = createUserWithEmailAndPasswordAtom(email, password);
-    alert("Notif", JSON.stringify(x));
     // c-> is email
     // c-> is password
     //navigation.navigate(screenNames.Home as any);

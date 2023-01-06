@@ -1,8 +1,10 @@
 // import { useAuthRequest, makeRedirectUri } from "expo-auth-session";
 
-import { FacebookAuthHook } from "../firebase/authentication";
-
-export const FACEBOOK_CLIENT_ID = "1929390870741214";
+export const facebook_config = {
+  appID: "1929390870741214",
+  secret: "3eb4c5c7ac78a0f913119f6e652bcb05",
+  redirect_uri: "https://garage-fitness-tracker.firebaseapp.com/__/auth/handler"
+};
 
 // // Endpoint
 // const discovery = {
@@ -28,4 +30,4 @@ export const FACEBOOK_CLIENT_ID = "1929390870741214";
 //   );
 // };
 
-export const FacebookAuth = FacebookAuthHook;
+//const FacebookAuth = FacebookAuthHook;

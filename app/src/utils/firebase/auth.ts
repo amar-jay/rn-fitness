@@ -4,19 +4,15 @@ import {
   User,
   GoogleAuthProvider as FirebaseGoogleAuth,
   initializeAuth,
-  signInWithCredential,
-  getAuth,
-  getReactNativePersistence,
-  FacebookAuthProvider
+  getReactNativePersistence
 } from "firebase/auth/react-native";
-import * as Facebook from "expo-auth-session/providers/facebook";
-import { ResponseType } from "expo-auth-session";
+import { AsyncStorage } from "react-native";
+//import { AsyncStorage } from "@react-native-async-storage/async-storage";
+//import * as Facebook from "expo-auth-session/providers/facebook";
+//import { ResponseType } from "expo-auth-session";
 import { Email } from "types";
-import { atom } from "jotai";
 import { firebaseApp } from "./init";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { FACEBOOK_CLIENT_ID } from "../auth/facebook";
-import { useEffect } from "react";
+//import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Initialize Firebase Authentication and get a reference to the service
 //export const auth = getAuth(firebaseApp);
@@ -93,6 +89,7 @@ export const GoogleAuthProvider = () => {
   return provider;
 };
 
+/*
 export const FacebookAuthHook = () => {
   const [request, response, promptAsync] = Facebook.useAuthRequest({
     responseType: ResponseType.Token,
@@ -115,3 +112,4 @@ export const FacebookAuthHook = () => {
     promptAsync
   };
 };
+*/
