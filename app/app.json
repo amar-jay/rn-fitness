@@ -3,7 +3,12 @@
     "plugins": [
       "@react-native-firebase/app",
       "@react-native-firebase/perf",
-      "react-native-fbsdk-next"
+      "react-native-fbsdk-next", 
+      [ "expo-build-properties", {
+      "ios": {
+        "useFrameworks": "static"
+      }
+      }],
     ],
     "name": "fitness",
     "slug": "fitness",
