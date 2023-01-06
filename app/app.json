@@ -1,19 +1,5 @@
 {
   "expo": {
-    "plugins": [
-      "@react-native-firebase/app",
-      "@react-native-firebase/auth",
-      "@react-native-firebase/perf",
-      [
-        "react-native-fbsdk-next",
-        {
-          "appID": "1929390870741214",
-          "displayName": "Fitness Tracker",
-          "isAutoInitEnabled": true,
-          "iosUserTrackingPermission": "This identifier will be used to deliver personalized ads to you."
-        }
-      ]
-    ],
     "name": "fitness",
     "slug": "fitness",
     "version": "1.0.0",
@@ -67,5 +53,14 @@
         "projectId": "afae0a61-2a93-4fa3-adb7-f81354724007"
       }
     }
-  }
+  },
+     "plugins": [
+        "react-native-fbsdk-next",
+        {
+          "appID": "1929390870741214",
+          "displayName": "Fitness Tracker",
+          "isAutoInitEnabled": true,
+          "iosUserTrackingPermission": "This identifier will be used to deliver personalized ads to you."
+        }
+      ]
 }

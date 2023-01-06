@@ -15,23 +15,20 @@ import {
 import handleUrl from "@/utils/handle-url";
 //import * as WebBrowser from "expo-web-browser";
 //import { signInWithEmailAndPassword } from "@/utils/firebase";
-import { GithubAuth, FacebookAuth } from "@/utils/auth";
 import { maybeCompleteAuthSession } from "expo-web-browser";
+import { createUserWithEmailAndPasswordAtom } from "@/utils/firebase";
 
-maybeCompleteAuthSession();
 type Props = NativeStackScreenProps<StackParamList, ScreenNames["Login"]>;
 const Login: React.FC<Props> = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const gh_auth = GithubAuth();
-  const fb_auth = FacebookAuth();
   const handleGithubAuthSignIn = () => {
-    return gh_auth.promptAsync();
+    //return gh_auth.promptAsync();
     // alert("Sign In", TOKEN);
   };
   const handleFacebookAuthSignIn = () => {
     return handleUrl("https://www.facebook.com/");
-    return fb_auth.promptAsync();
+    //   return fb_auth.promptAsync();
   };
   const handleSignUp = () => {
     navigation.navigate(screenNames.Signup);
@@ -64,9 +61,11 @@ const Login: React.FC<Props> = ({ navigation }) => {
       alert("Sign In", "Invalid password");
       return;
     }
+    const x = createUserWithEmailAndPasswordAtom(email, password);
+    alert("Notif", JSON.stringify(x));
     // c-> is email
     // c-> is password
-    navigation.navigate(screenNames.Home as any);
+    //navigation.navigate(screenNames.Home as any);
   };
 
   return (
@@ -94,7 +93,7 @@ const Login: React.FC<Props> = ({ navigation }) => {
         />
         <Button
           textName={"Sign In"}
-          disabled
+          //disabled
           buttonWidth={64}
           onClick={handleSignIn}
         />

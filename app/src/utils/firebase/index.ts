@@ -5,7 +5,7 @@ import {
   authStateObserverAtom,
   createUserWithEmailAndPasswordAtom,
   signInWithEmailAndPassword
-} from "./authentication";
+} from "./auth";
 // Initialize Firestore
 
 // sample function to get a list of cities from your database

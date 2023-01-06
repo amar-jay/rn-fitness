@@ -34,9 +34,9 @@ export const createUserWithEmailAndPasswordAtom = async (
       console.log("userCredential", e);
       return e;
     })
-    .then(userCredential => {
-      return atom(userCredential);
-    })
+    // .then(userCredential => {
+    //   return atom(userCredential);
+    // })
     .catch(error => {
       console.error(error);
       throw error;
